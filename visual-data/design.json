@@ -1,0 +1,61 @@
+{
+  "colors": {
+    "bgPrimary": "#FAFAF7",
+    "bgSecondary": "#F6F3EB",
+    "bgWarm": "#FFFDF9",
+    "surfaceCard": "#FFFFFF",
+    "surfaceElevated": "#FDFBF7",
+    "goldPrimary": "#C59114",
+    "goldVibrant": "#D4A017",
+    "goldLight": "#F5D372",
+    "goldPale": "#FCF4D9",
+    "goldDark": "#8A610A",
+    "flameSaffron": "#E65C00",
+    "textPrimary": "#1A1208",
+    "textSecondary": "#4A3B2C",
+    "textMuted": "#7A6652",
+    "successGreen": "#3E7B44",
+    "borderGold": "rgba(197, 145, 20, 0.24)",
+    "borderGoldStrong": "rgba(197, 145, 20, 0.55)"
+  },
+  "fonts": {
+    "heading": "Plus Jakarta Sans",
+    "body": "Plus Jakarta Sans",
+    "mono": "ui-monospace, monospace"
+  },
+  "typography": {
+    "heroHeadline": {
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": 900,
+      "desktopSize": "2.95rem",
+      "mobileSize": "1.875rem",
+      "lineHeight": "1.12"
+    },
+    "sectionHeadline": {
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": 900,
+      "desktopSize": "3rem",
+      "mobileSize": "1.5rem",
+      "lineHeight": "1.15"
+    },
+    "body": {
+      "fontFamily": "Plus Jakarta Sans",
+      "fontWeight": 400,
+      "desktopSize": "1rem",
+      "mobileSize": "0.875rem",
+      "lineHeight": "1.6"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "px-6 py-3 rounded-xl bg-gradient-to-r from-[#C59114] via-[#D4A017] to-[#E5B537] text-white font-black shadow-[0_6px_20px_rgba(197,145,20,0.25)] hover:shadow-[0_10px_26px_rgba(197,145,20,0.35)]",
+      "secondary": "px-4 py-2 rounded-xl bg-[#FFFFFF] text-[#8A610A] hover:bg-[#FFFDF9] border border-[#D4A017]/30 font-bold",
+      "whatsapp": "py-3 px-4 rounded-xl bg-[#25D366] hover:bg-[#20BD5A] text-white font-black"
+    },
+    "cards": {
+      "diyaCard": "bg-[#FFFFFF] hover:bg-[#FFFDF9] border border-[#D4A017]/30 hover:border-[#D4A017] shadow-[0_4px_16px_rgba(138,97,10,0.06)] hover:shadow-[0_10px_26px_rgba(197,145,20,0.16)] rounded-2xl sm:rounded-3xl",
+      "selectedDiyaCard": "bg-gradient-to-b from-[#FFFDF9] to-[#FBF4E4] border-2 border-[#C59114] shadow-[0_12px_32px_rgba(197,145,20,0.22)] scale-[1.02] sm:scale-105"
+    }
+  }
+}
+
