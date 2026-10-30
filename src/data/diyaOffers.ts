@@ -7,9 +7,10 @@ export interface DiyaOffer {
   headline: string;
   tagline: string;
   valueAmount: string;
-  numericValue: number;
+  numericValue?: number;
   badge: string;
   isGrandPrize?: boolean;
+  isBetterLuck?: boolean;
   deliverables: string[];
   terms: string[];
   voucherCode: string;
@@ -22,25 +23,23 @@ export const DIYA_OFFERS: DiyaOffer[] = [
     number: "01",
     name: "Ananta Diya",
     hindiName: "अनंत दीप",
-    meaning: "The Lamp of Infinite Potential",
-    headline: "Full Brand Identity & Complete Web Revamp",
-    tagline: "The Grand Dhamaka Prize — Elevate your enterprise presence to global standards.",
-    valueAmount: "₹50,000",
-    numericValue: 50000,
-    badge: "Grand Festive Prize · 100% Free",
-    isGrandPrize: true,
+    meaning: "The Lamp of Infinite Creativity",
+    headline: "5 Free Reels Edits",
+    tagline: "5 free Reels edits — kisi bhi service ke saath.",
+    valueAmount: "5 Free Reels",
+    numericValue: 15000,
+    badge: "Free Service Add-On",
     deliverables: [
-      "Complete design system overhaul (Typography, Color Palette, UI Tokens)",
-      "Bespoke high-performance web experience redesign (up to 5 core pages)",
-      "Interactive motion design, responsive layouts, and modern frontend code",
-      "Executive design review with TWS Principal Architect"
+      "5 professionally edited Reels / Shorts for your brand",
+      "Dynamic typography, viral captions, and sound design",
+      "Valid with any TWS digital, marketing, or web service"
     ],
     terms: [
       "Valid for 60 days from Diwali 2026",
-      "Applicable to new builds or redesigns of existing web platforms",
-      "Can be transferred once to a registered business partner"
+      "Applicable alongside any active TWS service package",
+      "Can be redeemed immediately by quoting voucher code"
     ],
-    voucherCode: "DHAMAKA-ANANTA-50K-8F2X",
+    voucherCode: "DHAMAKA-5REELS-FREE",
     accentColor: "#F5BD55"
   },
   {
@@ -48,23 +47,22 @@ export const DIYA_OFFERS: DiyaOffer[] = [
     number: "02",
     name: "Surya Diya",
     hindiName: "सूर्य दीप",
-    meaning: "The Lamp of Solar Radiance & Speed",
-    headline: "SEO, Core Web Vitals & Speed Architecture Overhaul",
-    tagline: "Attain top-tier Lighthouse 95+ scores and organic discoverability.",
-    valueAmount: "₹35,000",
-    numericValue: 35000,
-    badge: "Performance Architecture · 100% Free",
+    meaning: "The Lamp of Outreach & Energy",
+    headline: "20 Leads Par Free Calling",
+    tagline: "20 leads par free calling — hum leads ko call karke meetings book karenge.",
+    valueAmount: "20 Free Calls",
+    numericValue: 20000,
+    badge: "Free Calling & Meetings",
     deliverables: [
-      "Deep Core Web Vitals audit (LCP, INP, CLS optimization)",
-      "Technical SEO infrastructure, Schema.org rich snippets & OpenGraph setup",
-      "Bundle size optimization, asset compression, and edge caching config",
-      "Before-and-after audit report with measurable page speed improvements"
+      "Dedicated outbound calling to 20 prospective business leads",
+      "Custom high-converting calling script tailored to your offer",
+      "Direct qualified calendar meeting bookings for your sales team"
     ],
     terms: [
       "Valid for 45 days from issue date",
-      "Includes implementation guidance or direct codebase PR integration"
+      "Lead list provided by client or sourced via campaign"
     ],
-    voucherCode: "DHAMAKA-SURYA-35K-9M4Q",
+    voucherCode: "DHAMAKA-20LEADS-CALL",
     accentColor: "#FF7A36"
   },
   {
@@ -72,23 +70,22 @@ export const DIYA_OFFERS: DiyaOffer[] = [
     number: "03",
     name: "Tejas Diya",
     hindiName: "तेजस दीप",
-    meaning: "The Lamp of Radiance & Intelligence",
-    headline: "Custom AI Integration & Workflow Automation Sprint",
-    tagline: "Empower your business operations with custom Gemini AI capabilities.",
-    valueAmount: "₹25,000",
-    numericValue: 25000,
-    badge: "AI Architecture · 100% Free",
+    meaning: "The Lamp of Value & Radiance",
+    headline: "30% OFF on Any Service",
+    tagline: "30% off — kisi bhi service ki final price par.",
+    valueAmount: "Flat 30% OFF",
+    numericValue: 30000,
+    badge: "Flat 30% Discount",
     deliverables: [
-      "Custom Gemini API workflow design tailored to your product pipeline",
-      "Automated prompt engineering, function calling, or data extraction pipeline",
-      "Secure backend proxy implementation with rate limiting and secret storage",
-      "Working prototype and comprehensive deployment checklist"
+      "Flat 30% discount applied directly to your final project price",
+      "Applicable across web development, design, branding, or marketing",
+      "No upper cap — maximum festive savings on your project"
     ],
     terms: [
-      "Valid for 45 days from issue date",
-      "Covers architecture, integration code, and testing in staging"
+      "Valid for 60 days from Diwali 2026",
+      "Applicable to new project contracts and renewals"
     ],
-    voucherCode: "DHAMAKA-TEJAS-25K-3P7Z",
+    voucherCode: "DHAMAKA-FLAT30-OFF",
     accentColor: "#F5BD55"
   },
   {
@@ -96,167 +93,162 @@ export const DIYA_OFFERS: DiyaOffer[] = [
     number: "04",
     name: "Lakshmi Diya",
     hindiName: "लक्ष्मी दीप",
-    meaning: "The Lamp of Prosperity & Delight",
-    headline: "Flagship UI/UX Redesign Sprint for Your Core Product",
-    tagline: "Turn friction into flow with world-class product interface design.",
-    valueAmount: "₹20,000",
-    numericValue: 20000,
-    badge: "Design Sprint · 100% Free",
+    meaning: "The Lamp of Digital Prosperity",
+    headline: "Free Custom Landing Page",
+    tagline: "Free landing page — aap apni requirement ke hisaab se content/features choose kar sakte hain.",
+    valueAmount: "100% Free Landing Page",
+    numericValue: 35000,
+    badge: "Grand Free Landing Page",
+    isGrandPrize: true,
     deliverables: [
-      "Heuristic usability audit of your current user flow and checkout funnel",
-      "High-fidelity desktop & mobile component redesign in Figma/Tailwind",
-      "Accessibility & WCAG AA contrast compliance pass",
-      "Component library handoff ready for immediate engineering implementation"
+      "Custom high-converting landing page built for your business",
+      "Complete freedom to choose your required content, sections, and features",
+      "Mobile-optimized, ultra-fast performance, and WhatsApp/lead capture"
     ],
     terms: [
-      "Valid for 45 days from issue date",
-      "Applicable to SaaS dashboards, e-commerce checkouts, or mobile apps"
+      "Valid for 60 days from Diwali 2026",
+      "Includes UI design, modern responsive coding, and launch support"
     ],
-    voucherCode: "DHAMAKA-LAKSHMI-20K-4V1R",
-    accentColor: "#FFD98A"
+    voucherCode: "DHAMAKA-FREE-LANDINGPAGE",
+    accentColor: "#E5B537"
   },
   {
     id: "diya-05",
     number: "05",
-    name: "Kanti Diya",
-    hindiName: "कांति दीप",
-    meaning: "The Lamp of Brilliance & Efficiency",
-    headline: "Cloud Infrastructure, Docker & DevOps Speed Package",
-    tagline: "Scale seamlessly with rock-solid serverless or container deployment.",
-    valueAmount: "₹15,000",
-    numericValue: 15000,
-    badge: "DevOps Package · 100% Free",
+    name: "Shakti Diya",
+    hindiName: "शक्ति दीप",
+    meaning: "The Lamp of Creator Power",
+    headline: "2 Creators Ke Final-Edited Videos",
+    tagline: "2 creators ke final-edited videos — apne brand ke liye, jahan chahein use karein.",
+    valueAmount: "2 Creator Videos",
+    numericValue: 25000,
+    badge: "2 Creator Videos Free",
     deliverables: [
-      "Cloud Run / Kubernetes / Vercel architecture optimization",
-      "Automated CI/CD GitHub Actions workflow build",
-      "Environment security hardening, secrets management & SSL setup",
-      "Production readiness checklist & monitoring guidelines"
+      "2 authentic creator videos produced for your brand or product",
+      "Script concept, creator management, and final video editing",
+      "Full commercial rights to use across Instagram, Meta ads, and web"
     ],
     terms: [
       "Valid for 45 days from issue date",
-      "Applies to Node.js, Next.js, Python, or Go microservices"
+      "Creators selected to match your specific industry niche"
     ],
-    voucherCode: "DHAMAKA-KANTI-15K-2W8L",
-    accentColor: "#8EAF83"
+    voucherCode: "DHAMAKA-2CREATOR-VID",
+    accentColor: "#E65C00"
   },
   {
     id: "diya-06",
     number: "06",
-    name: "Mangal Diya",
-    hindiName: "मंगल दीप",
-    meaning: "The Lamp of Auspicious Growth",
-    headline: "Mobile-First PWA & Offline Experience Transformation",
-    tagline: "Give your users an installable, lightning-fast app experience.",
-    valueAmount: "₹30,000",
-    numericValue: 30000,
-    badge: "Mobile Web · 100% Free",
+    name: "Prana Diya",
+    hindiName: "प्राण दीप",
+    meaning: "The Lamp of Longevity & Growth",
+    headline: "3-Month Package Par 3 Months Free",
+    tagline: "3-month package par 3 months free — get 6 months of full growth for the price of 3.",
+    valueAmount: "3 Months Free",
+    numericValue: 50000,
+    badge: "Buy 3, Get 3 Free",
     deliverables: [
-      "Complete Progressive Web App (PWA) manifest and service worker integration",
-      "Offline caching strategy, background sync, and install prompt",
-      "Touch-optimized gesture handling and responsive mobile UI refinement",
-      "Lighthouse PWA compliance verification and testing"
+      "Pay for 3 months retainer and receive next 3 months 100% free",
+      "Continuous marketing, development, or creative execution",
+      "Massive 6-month growth runway with dedicated agency support"
     ],
     terms: [
-      "Valid for 45 days from issue date",
-      "Compatible with any modern React, Next.js, or Vue web project"
+      "Valid for 60 days from Diwali 2026",
+      "Applicable to social media, performance marketing, or tech retainers"
     ],
-    voucherCode: "DHAMAKA-MANGAL-30K-7Y2B",
-    accentColor: "#FF7A36"
+    voucherCode: "DHAMAKA-3PLUS3-FREE",
+    accentColor: "#C59114"
   },
   {
     id: "diya-07",
     number: "07",
-    name: "Jyoti Diya",
-    hindiName: "ज्योति दीप",
-    meaning: "The Lamp of Illuminating Clarity",
-    headline: "Conversion Rate Optimization (CRO) & Funnel Audit",
-    tagline: "Diagnose drop-offs, sharpen value propositions, and double conversions.",
-    valueAmount: "₹25,000",
-    numericValue: 25000,
-    badge: "Growth Engine · 100% Free",
+    name: "Kanti Diya",
+    hindiName: "कांति दीप",
+    meaning: "The Lamp of Local Prominence",
+    headline: "2 Months Free GMB Profile Management",
+    tagline: "2 months free GMB profile management — social media ya lead-generation package ke saath.",
+    valueAmount: "2 Months Free GMB",
+    numericValue: 18000,
+    badge: "2 Months Free GMB",
     deliverables: [
-      "Detailed analysis of user scroll maps, drop-offs, and micro-copy friction",
-      "3 high-impact A/B test hypotheses with ready-to-test variant wireframes",
-      "Hero section & CTA restructuring for immediate clarity",
-      "Executive summary presentation with prioritized engineering roadmap"
+      "Google Business Profile optimization and local map pack ranking",
+      "Weekly post updates, keyword-rich photo posts, and review strategy",
+      "Complimentary with any social media or lead generation package"
     ],
     terms: [
-      "Valid for 45 days from issue date",
-      "Applicable to landing pages, lead capture funnels, or subscription flows"
+      "Valid for 60 days from Diwali 2026",
+      "Applies alongside any new social media or lead-generation engagement"
     ],
-    voucherCode: "DHAMAKA-JYOTI-25K-1D9S",
-    accentColor: "#F5BD55"
+    voucherCode: "DHAMAKA-2M-GMB-FREE",
+    accentColor: "#FF9926"
   },
   {
     id: "diya-08",
     number: "08",
-    name: "Shanti Diya",
-    hindiName: "शांति दीप",
-    meaning: "The Lamp of Peace of Mind & Security",
-    headline: "Web Application Security & Vulnerability Assessment",
-    tagline: "Sleep soundly knowing your frontend, auth, and APIs are fortified.",
-    valueAmount: "₹18,000",
-    numericValue: 18000,
-    badge: "Security Audit · 100% Free",
+    name: "Jyoti Diya",
+    hindiName: "ज्योति दीप",
+    meaning: "The Lamp of Sales Enlightenment",
+    headline: "Exclusive Sales Guide (Worth ₹2,500)",
+    tagline: "Sales Guide, worth ₹2,500 — actionable sales conversion and objection-handling blueprint.",
+    valueAmount: "Worth ₹2,500",
+    numericValue: 2500,
+    badge: "Worth ₹2,500 · Free Access",
     deliverables: [
-      "OWASP Top 10 vulnerability scan across client and server endpoints",
-      "Authentication flow, cookie attributes, CORS, and CSRF token audit",
-      "Third-party dependency vulnerability mitigation plan",
-      "Confidential remediation report with exact code snippets"
+      "Proven high-ticket closing scripts and sales psychology framework",
+      "Step-by-step objection handling templates for consultations",
+      "Actionable sales blueprint worth ₹2,500 delivered straight to your inbox"
     ],
     terms: [
-      "Valid for 45 days from issue date",
-      "Confidentiality non-disclosure agreement provided"
+      "Instant lifetime digital access upon registration",
+      "Includes implementation checklist and objection cheat-sheet"
     ],
-    voucherCode: "DHAMAKA-SHANTI-18K-5K3M",
-    accentColor: "#8EAF83"
+    voucherCode: "DHAMAKA-SALES-GUIDE",
+    accentColor: "#F5BD55"
   },
   {
     id: "diya-09",
     number: "09",
-    name: "Prabha Diya",
-    hindiName: "प्रभा दीप",
-    meaning: "The Lamp of Radiance & Foundation",
-    headline: "Enterprise REST / GraphQL API Architecture Design",
-    tagline: "Build a scalable, resilient backend backbone for high-traffic products.",
-    valueAmount: "₹40,000",
-    numericValue: 40000,
-    badge: "Backend Architecture · 100% Free",
+    name: "Shanti Diya",
+    hindiName: "शांति दीप",
+    meaning: "The Lamp of Festive Blessing",
+    headline: "Better Luck Next Time!",
+    tagline: "Thank you for celebrating Diwali with TWS! May this festive season bring you and your business boundless joy and prosperity.",
+    valueAmount: "Diwali Blessing",
+    numericValue: 0,
+    badge: "Festive Token",
+    isBetterLuck: true,
     deliverables: [
-      "Scalable API contract definition (OpenAPI / Swagger 3.0 specs)",
-      "Database schema optimization (PostgreSQL / Firestore indexing strategies)",
-      "Authentication & role-based access control (RBAC) blueprint",
-      "Postman collection with automated test suites"
+      "Auspicious festive blessing from the entire TWS engineering family",
+      "Complimentary 30-minute growth strategy consultation with TWS",
+      "Priority access to upcoming seasonal business resources and workshops"
     ],
     terms: [
-      "Valid for 60 days from issue date",
-      "Includes 2 architectural consulting sessions with Lead Engineers"
+      "Free 30-min strategy session valid for 30 days",
+      "Connect with our founders anytime on WhatsApp"
     ],
-    voucherCode: "DHAMAKA-PRABHA-40K-6T5N",
-    accentColor: "#F5BD55"
+    voucherCode: "DHAMAKA-SHUBH-DIWALI",
+    accentColor: "#E5B537"
   },
   {
     id: "diya-10",
     number: "10",
     name: "Vijaya Diya",
-    hindiName: "विजया दीप",
-    meaning: "The Lamp of Victory & Sustained Excellence",
-    headline: "3-Month Priority Engineering & Design Advisory Retainer",
-    tagline: "Direct weekly advisory and code reviews from senior TWS architects.",
-    valueAmount: "₹22,000",
-    numericValue: 22000,
-    badge: "Executive Advisory · 100% Free",
+    hindiName: "विजय दीप",
+    meaning: "The Lamp of Social Victory",
+    headline: "1 Month of Social Media Free",
+    tagline: "1 month of social media free — 1 paid month lene par.",
+    valueAmount: "1 Month Free SMM",
+    numericValue: 25000,
+    badge: "Buy 1 Month, Get 1 Free",
     deliverables: [
-      "Bi-weekly 1-on-1 technical strategy sessions with TWS Founders",
-      "Asynchronous pull request code reviews and architecture guidance",
-      "Direct Slack/Discord channel access for quick design & stack decisions",
-      "Quarterly technical roadmap alignment document"
+      "Full month social media content calendar, design, and posting",
+      "Buy 1 month of social media and get the next month 100% free",
+      "Custom graphics, reel ideation, captions, and hashtag strategy"
     ],
     terms: [
-      "Valid for 90 days from activation date",
-      "Ideal for founders, CTOs, and product engineering teams"
+      "Valid for 60 days from Diwali 2026",
+      "Valid for Instagram, LinkedIn, and Facebook brand channels"
     ],
-    voucherCode: "DHAMAKA-VIJAYA-22K-9C4H",
+    voucherCode: "DHAMAKA-1M-SMM-FREE",
     accentColor: "#FFD98A"
   }
 ];
@@ -265,6 +257,7 @@ export const STORAGE_KEY_OPENED_DIYA = "tws_diwali_opened_diya_id";
 export const STORAGE_KEY_IS_OPENED = "tws_diwali_is_opened";
 export const STORAGE_KEY_VOUCHER_CODE = "tws_diwali_voucher_code";
 export const STORAGE_KEY_OPENED_AT = "tws_diwali_opened_at";
+export const STORAGE_KEY_CLAIMED_LEAD = "tws_diwali_claimed_lead";
 
 // Legacy keys maintained for full compatibility
 const LEGACY_STORAGE_KEY = "tws_diwali_selected_diya_id";
@@ -274,12 +267,23 @@ export function getDiyaOffer(id: string): DiyaOffer | undefined {
   return DIYA_OFFERS.find((d) => d.id === id);
 }
 
+export interface ClaimedLeadData {
+  fullName: string;
+  whatsappNumber: string;
+  email: string;
+  businessCategory: string;
+  voucherCode: string;
+  diyaId: string;
+  claimedAt: string;
+}
+
 export interface OpenedDiyaState {
   isOpened: boolean;
   diyaId: string | null;
   offer?: DiyaOffer;
   voucherCode?: string;
   openedAt?: string;
+  claimedLead?: ClaimedLeadData | null;
 }
 
 /**
@@ -298,6 +302,16 @@ export function getSavedOpenedDiya(): OpenedDiyaState {
       localStorage.getItem(STORAGE_KEY_OPENED_DIYA) ||
       localStorage.getItem(LEGACY_STORAGE_KEY);
 
+    let claimedLead: ClaimedLeadData | null = null;
+    const rawLead = localStorage.getItem(STORAGE_KEY_CLAIMED_LEAD);
+    if (rawLead) {
+      try {
+        claimedLead = JSON.parse(rawLead);
+      } catch {
+        claimedLead = null;
+      }
+    }
+
     if (diyaId && isOpenedFlag) {
       const offer = getDiyaOffer(diyaId);
       const voucherCode =
@@ -310,10 +324,11 @@ export function getSavedOpenedDiya(): OpenedDiyaState {
         offer,
         voucherCode,
         openedAt,
+        claimedLead,
       };
     }
 
-    return { isOpened: false, diyaId: null };
+    return { isOpened: false, diyaId: null, claimedLead };
   } catch {
     return { isOpened: false, diyaId: null };
   }
@@ -337,6 +352,18 @@ export function saveOpenedDiya(diyaId: string): void {
     if (offer) {
       localStorage.setItem(STORAGE_KEY_VOUCHER_CODE, offer.voucherCode);
     }
+  } catch {
+    // Graceful fallback
+  }
+}
+
+/**
+ * Saves the user's claim details (Name, WhatsApp, Email, Business Category).
+ */
+export function saveClaimedLead(data: ClaimedLeadData): void {
+  if (typeof window === "undefined") return;
+  try {
+    localStorage.setItem(STORAGE_KEY_CLAIMED_LEAD, JSON.stringify(data));
   } catch {
     // Graceful fallback
   }

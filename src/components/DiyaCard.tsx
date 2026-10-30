@@ -45,7 +45,7 @@ export function DiyaCard({ offer, isOpened = false, isLocked = false, onSelect }
         {isOpened ? (
           <span className="flex items-center gap-1 text-[9px] xs:text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-white bg-gradient-to-r from-[#C59114] to-[#E5B537] px-1.5 xs:px-2 py-0.5 rounded-full shadow-xs">
             <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 stroke-[3]" />
-            <span>Opened</span>
+            <span>{offer.valueAmount}</span>
           </span>
         ) : isLocked ? (
           <span className="flex items-center gap-1 text-[9px] xs:text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#7A6652] bg-[#F6F3EB] px-1.5 py-0.5 rounded shadow-xs">
@@ -54,7 +54,7 @@ export function DiyaCard({ offer, isOpened = false, isLocked = false, onSelect }
           </span>
         ) : offer.isGrandPrize ? (
           <span className="text-[9px] xs:text-[10px] sm:text-[11px] uppercase font-black tracking-wider text-[#1A1208] bg-[#F5D372] border border-[#D4A017]/40 px-1 xs:px-1.5 sm:px-2 py-0.5 rounded shadow-xs">
-            ₹50K Grand
+            ✨ Free LP
           </span>
         ) : (
           <span className="text-[9px] xs:text-[10px] sm:text-[11px] text-[#7A6652] font-semibold tracking-wide">
@@ -172,10 +172,10 @@ export function DiyaCard({ offer, isOpened = false, isLocked = false, onSelect }
               : "text-[#1A1208] group-hover:text-[#C59114]"
           }`}
         >
-          {offer.name}
+          {isOpened ? offer.headline : offer.name}
         </h4>
         <p className="text-[10px] xs:text-[11px] sm:text-xs text-[#8A610A] font-bold mt-0.5">
-          {offer.hindiName}
+          {isOpened ? offer.valueAmount : offer.hindiName}
         </p>
       </div>
 

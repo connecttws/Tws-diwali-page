@@ -24,13 +24,11 @@ export default function HomePage() {
   }, []);
 
   // When a user opens any Diya:
-  // 1. Store opened state permanently in localStorage
-  // 2. Redirect to the Thank You page
+  // Store opened state permanently in localStorage
   const handleOpenDiya = (diyaId: string) => {
     saveOpenedDiya(diyaId);
     setOpenedDiyaId(diyaId);
     setIsAlreadyOpened(true);
-    router.push("/thank-you");
   };
 
   const scrollToDiyaSelection = () => {

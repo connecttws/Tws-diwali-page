@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Flame, CheckCircle2, Lock, Copy, Check, ArrowRight, ShieldCheck } from "lucide-react";
 import { DIYA_OFFERS, DiyaOffer } from "@/data/diyaOffers";
 import { DiyaCard } from "./DiyaCard";
+import { DiyaRevealModal } from "./DiyaRevealModal";
 import { playDiyaTapSound } from "@/utils/audio";
 
 interface DiyaSelectionGridProps {
@@ -18,17 +20,20 @@ export function DiyaSelectionGrid({
   isAlreadyOpened,
   onOpenDiya,
 }: DiyaSelectionGridProps) {
+  const router = useRouter();
   const [copied, setCopied] = useState(false);
   const [lockedNotice, setLockedNotice] = useState<string | null>(null);
+  const [modalOffer, setModalOffer] = useState<DiyaOffer | null>(null);
 
   const openedOffer: DiyaOffer | undefined = openedDiyaId
     ? DIYA_OFFERS.find((d) => d.id === openedDiyaId)
     : undefined;
 
   const handleCardClick = (diyaId: string) => {
+    const offer = DIYA_OFFERS.find((d) => d.id === diyaId);
     if (isAlreadyOpened) {
-      if (diyaId === openedDiyaId) {
-        onOpenDiya(diyaId);
+      if (diyaId === openedDiyaId && openedOffer) {
+        setModalOffer(openedOffer);
       } else {
         setLockedNotice(
           `You have already opened Diya ${openedOffer?.number || ""} (${
@@ -42,6 +47,13 @@ export function DiyaSelectionGrid({
 
     playDiyaTapSound();
     onOpenDiya(diyaId);
+    if (offer) {
+      setModalOffer(offer);
+    }
+  };
+
+  const handleProceedToThankYou = () => {
+    router.push("/thank-you");
   };
 
   const handleCopyVoucher = async () => {
@@ -214,6 +226,15 @@ export function DiyaSelectionGrid({
           </div>
         )}
       </div>
+
+      {/* Opening Reveal Modal */}
+      {modalOffer && (
+        <DiyaRevealModal
+          offer={modalOffer}
+          onProceedToThankYou={handleProceedToThankYou}
+          onClose={() => setModalOffer(null)}
+        />
+      )}
     </section>
   );
 }

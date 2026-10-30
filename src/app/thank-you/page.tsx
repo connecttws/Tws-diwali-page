@@ -2,15 +2,63 @@
 
 import { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
-import { Copy, Check, Gift, ExternalLink, ShieldCheck, Flame, Award, Clock, Sparkles } from "lucide-react";
-import { getSavedOpenedDiya, getDiyaOffer, DIYA_OFFERS, DiyaOffer } from "@/data/diyaOffers";
+import { 
+  Copy, 
+  Check, 
+  Gift, 
+  ExternalLink, 
+  ShieldCheck, 
+  Flame, 
+  Award, 
+  Clock, 
+  Sparkles, 
+  User, 
+  Phone, 
+  Mail, 
+  Briefcase, 
+  Send,
+  CheckCircle2,
+  Edit3
+} from "lucide-react";
+import { 
+  getSavedOpenedDiya, 
+  getDiyaOffer, 
+  saveClaimedLead, 
+  DIYA_OFFERS, 
+  DiyaOffer, 
+  ClaimedLeadData 
+} from "@/data/diyaOffers";
 import { playDiwaliRevealChime } from "@/utils/audio";
 import { FestiveLights } from "@/components/FestiveLights";
+
+const BUSINESS_CATEGORIES = [
+  "E-Commerce / D2C Brand",
+  "Real Estate & Construction",
+  "Healthcare, Clinics & Doctors",
+  "Fitness, Gym & Nutrition",
+  "Coaching, EdTech & Consultants",
+  "IT, Software & SaaS",
+  "Professional Services & Agency",
+  "Hospitality, Food & Restaurants",
+  "Retail & Local Business",
+  "Other Business / Startup"
+];
 
 export default function ThankYouPage() {
   const [offer, setOffer] = useState<DiyaOffer | null>(null);
   const [copied, setCopied] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  // Lead Form State
+  const [formData, setFormData] = useState({
+    fullName: "",
+    whatsappNumber: "",
+    email: "",
+    businessCategory: BUSINESS_CATEGORIES[0],
+  });
+  const [isClaimed, setIsClaimed] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -29,12 +77,22 @@ export default function ThankYouPage() {
       }
     }
 
-    // Default to the first diya if not found
     if (!currentOffer) {
       currentOffer = DIYA_OFFERS[0];
     }
 
     setOffer(currentOffer);
+
+    // Restore previously claimed lead data if available
+    if (saved.claimedLead) {
+      setFormData({
+        fullName: saved.claimedLead.fullName || "",
+        whatsappNumber: saved.claimedLead.whatsappNumber || "",
+        email: saved.claimedLead.email || "",
+        businessCategory: saved.claimedLead.businessCategory || BUSINESS_CATEGORIES[0],
+      });
+      setIsClaimed(true);
+    }
 
     // Play auspicious temple bell chime
     playDiwaliRevealChime();
@@ -49,10 +107,9 @@ export default function ThankYouPage() {
         disableForReducedMotion: true,
       });
 
-      // Second gentle wave
       setTimeout(() => {
         confetti({
-          particleCount: 40,
+          particleCount: 45,
           spread: 60,
           origin: { y: 0.65 },
           colors: ["#D4A017", "#F5D372", "#FFE58F"],
@@ -60,7 +117,7 @@ export default function ThankYouPage() {
         });
       }, 400);
     } catch {
-      // Safe catch for environment without canvas
+      // Safe catch
     }
   }, []);
 
@@ -76,6 +133,55 @@ export default function ThankYouPage() {
     }
   };
 
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!formData.fullName.trim()) {
+      setFormError("Please enter your full name.");
+      return;
+    }
+
+    const cleanPhone = formData.whatsappNumber.trim().replace(/\D/g, "");
+    if (!cleanPhone || cleanPhone.length < 10) {
+      setFormError("Please enter a valid 10-digit WhatsApp phone number.");
+      return;
+    }
+
+    if (!formData.email.trim() || !formData.email.includes("@")) {
+      setFormError("Please enter a valid email address.");
+      return;
+    }
+
+    setFormError("");
+
+    if (!offer) return;
+
+    const lead: ClaimedLeadData = {
+      fullName: formData.fullName.trim(),
+      whatsappNumber: formData.whatsappNumber.trim(),
+      email: formData.email.trim(),
+      businessCategory: formData.businessCategory,
+      voucherCode: offer.voucherCode,
+      diyaId: offer.id,
+      claimedAt: new Date().toISOString(),
+    };
+
+    saveClaimedLead(lead);
+    setIsClaimed(true);
+    setIsEditing(false);
+
+    try {
+      confetti({
+        particleCount: 90,
+        spread: 85,
+        origin: { y: 0.6 },
+        colors: ["#25D366", "#D4A017", "#F5D372", "#FFFFFF"],
+      });
+    } catch {
+      // Safe catch
+    }
+  };
+
   if (!mounted || !offer) {
     return (
       <div className="min-h-screen bg-[#FAFAF7] flex items-center justify-center p-4">
@@ -87,16 +193,26 @@ export default function ThankYouPage() {
     );
   }
 
+  // Pre-filled WhatsApp message including lead details
   const whatsappMessage = encodeURIComponent(
-    `Hello TWS Team! I picked Diya ${offer.number} (${offer.name}) in TWS Diwali Dhamaka and unlocked: ${offer.headline} (${offer.valueAmount} Value). My Voucher Code is: ${offer.voucherCode}. How do I redeem this?`
+    `Hello TWS Team! I have unlocked and claimed my Diwali Dhamaka Offer:
+- Name: ${formData.fullName || "TWS Client"}
+- WhatsApp: ${formData.whatsappNumber || "Shared on Chat"}
+- Email: ${formData.email || "Shared on Chat"}
+- Business Category: ${formData.businessCategory}
+- Diya: ${offer.number} (${offer.name})
+- Unlocked Offer: ${offer.headline} (${offer.valueAmount})
+- Voucher Code: ${offer.voucherCode}
+
+Please schedule my strategy kickoff session!`
   );
-  const whatsappUrl = `https://wa.me/?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/917042859955?text=${whatsappMessage}`;
 
   const emailSubject = encodeURIComponent(
-    `TWS Diwali Dhamaka Surprise: ${offer.name} (${offer.voucherCode})`
+    `TWS Diwali Dhamaka Claim: ${offer.headline} - ${formData.fullName || "Client"} (${offer.voucherCode})`
   );
   const emailBody = encodeURIComponent(
-    `Hello TWS Team,\n\nI unlocked the Diwali Dhamaka surprise for Diya ${offer.number} (${offer.name}):\n- Headline: ${offer.headline}\n- Value: ${offer.valueAmount}\n- Voucher Code: ${offer.voucherCode}\n\nPlease guide me with the redemption process.\n\nThank you!`
+    `Hello TWS Team,\n\nI have claimed my Diwali Dhamaka offer:\n- Name: ${formData.fullName}\n- WhatsApp: ${formData.whatsappNumber}\n- Email: ${formData.email}\n- Business Category: ${formData.businessCategory}\n- Diya: ${offer.number} (${offer.name})\n- Offer: ${offer.headline} (${offer.valueAmount})\n- Voucher Code: ${offer.voucherCode}\n\nPlease guide me with the redemption and next steps.\n\nThank you!`
   );
   const emailUrl = `mailto:hello@tws.in?subject=${emailSubject}&body=${emailBody}`;
 
@@ -106,15 +222,17 @@ export default function ThankYouPage() {
       <FestiveLights />
 
       {/* Elegant Header */}
-      <header className="sticky top-0 z-40 bg-[#FFFFFF]/90 backdrop-blur-md border-b border-[#D4A017]/20 py-3 sm:py-4 w-full shadow-xs">
+      <header className="sticky top-0 z-40 bg-[#FFFFFF]/90 backdrop-blur-md border-b border-[#D4A017]/20 py-3 sm:py-3.5 w-full shadow-xs">
         <div className="max-w-6xl mx-auto px-3.5 sm:px-6 flex items-center justify-between gap-2">
           <div className="flex items-center gap-2 sm:gap-2.5">
             <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-[#D4A017] via-[#E5B537] to-[#C59114] flex items-center justify-center shadow-xs shrink-0">
               <Flame className="w-4 h-4 sm:w-5 sm:h-5 text-white fill-white" />
             </div>
-            <div className="flex items-baseline">
-              <span className="font-extrabold text-lg sm:text-xl tracking-tight text-[#1A1208]">TWS</span>
-              <span className="font-bold text-xs text-[#C59114] tracking-wider uppercase ml-1.5 sm:ml-2 hidden sm:inline">
+            <div className="flex flex-col">
+              <span className="font-extrabold text-base sm:text-lg tracking-tight text-[#1A1208] leading-none">
+                TWS
+              </span>
+              <span className="font-bold text-[9px] sm:text-[10px] text-[#C59114] tracking-widest uppercase mt-0.5 leading-none">
                 Diwali Dhamaka
               </span>
             </div>
@@ -123,7 +241,7 @@ export default function ThankYouPage() {
           <div className="flex items-center gap-2">
             <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-[#3E7B44] bg-[#3E7B44]/15 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-[#3E7B44]/30 flex items-center gap-1.5 shadow-xs whitespace-nowrap">
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Voucher Confirmed</span>
+              <span>{isClaimed ? "Offer Registered" : "Voucher Reserved"}</span>
             </span>
           </div>
         </div>
@@ -144,7 +262,7 @@ export default function ThankYouPage() {
           </h1>
 
           <p className="text-xs sm:text-base lg:text-lg text-[#4A3B2C] mt-2 sm:mt-4 max-w-2xl mx-auto leading-relaxed px-1">
-            Your sacred Diwali Diya has revealed an exclusive digital transformation reward. Your voucher is permanently reserved below.
+            Your sacred Diwali Diya has revealed your exclusive offer. Complete your details below to formally avail and lock your voucher.
           </p>
         </div>
 
@@ -175,12 +293,12 @@ export default function ThankYouPage() {
             <div className="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-2.5 pt-2 sm:pt-0 border-t sm:border-t-0 border-[#D4A017]/15">
               <div className="text-left sm:text-right">
                 <div className="text-[10px] sm:text-[11px] uppercase font-bold text-[#8A610A]">Service Value</div>
-                <div className="text-xl sm:text-3xl font-black text-[#1A1208] tabular-nums">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-black text-[#1A1208] tabular-nums">
                   {offer.valueAmount}
                 </div>
               </div>
               <span className="text-xs font-black text-[#3E7B44] uppercase bg-[#3E7B44]/15 px-2.5 py-1 sm:py-1.5 rounded-xl border border-[#3E7B44]/30">
-                100% Free
+                {offer.badge}
               </span>
             </div>
           </div>
@@ -190,7 +308,7 @@ export default function ThankYouPage() {
             <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-[#1A1208] leading-tight mb-1.5 sm:mb-2">
               {offer.headline}
             </h3>
-            <p className="text-xs sm:text-base text-[#4A3B2C] leading-relaxed">
+            <p className="text-xs sm:text-base text-[#4A3B2C] leading-relaxed font-medium">
               {offer.tagline}
             </p>
           </div>
@@ -234,7 +352,7 @@ export default function ThankYouPage() {
           <div className="py-4 sm:py-7 border-b border-[#D4A017]/20 relative z-10">
             <h4 className="text-xs sm:text-sm font-black uppercase text-[#C59114] tracking-wider mb-3 sm:mb-4 flex items-center gap-2">
               <Gift className="w-4 h-4" />
-              <span>Key Deliverables Included (100% Free):</span>
+              <span>What is Included in Your Offer:</span>
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5">
               {offer.deliverables.map((item, idx) => (
@@ -254,41 +372,204 @@ export default function ThankYouPage() {
           </div>
 
           {/* Redemption Terms */}
-          <div className="py-4 sm:py-5 relative z-10 flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2 text-xs sm:text-sm text-[#7A6652] font-medium">
+          <div className="py-4 sm:py-5 border-b border-[#D4A017]/20 relative z-10 flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2 text-xs sm:text-sm text-[#7A6652] font-medium">
             <div className="flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C59114]" />
               <span>Valid for 60 days from Diwali 2026</span>
             </div>
             <div className="flex items-center gap-1.5 text-[#3E7B44]">
               <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span>100% Sponsored · Zero Upfront Cost</span>
+              <span>Exclusive Festive Voucher · Zero Hidden Cost</span>
             </div>
           </div>
 
-          {/* Claim Action CTAs */}
-          <div className="pt-3 sm:pt-4 relative z-10">
-            <div className="text-[11px] sm:text-xs uppercase font-bold text-[#8A610A] tracking-wider mb-2.5 text-center sm:text-left">
-              Redeem Immediately via Direct TWS Engineering Line:
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-xl sm:rounded-2xl bg-[#25D366] hover:bg-[#20BD5A] text-white font-black text-xs sm:text-base text-center active:scale-[0.98] transition-all shadow-[0_6px_20px_rgba(37,211,102,0.28)] flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <span>Claim on WhatsApp</span>
-                <ExternalLink className="w-4 h-4" />
-              </a>
+          {/* ========================================================================= */}
+          {/* AVAIL THE OFFER FORM SECTION (Name, WhatsApp, Email, Business Category) */}
+          {/* ========================================================================= */}
+          <div className="pt-6 sm:pt-8 relative z-10">
+            {isClaimed && !isEditing ? (
+              /* Claimed Confirmation Card */
+              <div className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#F4FAF5] via-[#EDF7EE] to-[#E6F4E8] border-2 border-[#3E7B44] shadow-md animate-fadeIn">
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-black uppercase text-[#256029] bg-white px-3 py-1 rounded-full border border-[#3E7B44]/30 shadow-xs">
+                    <CheckCircle2 className="w-4 h-4 text-[#3E7B44]" />
+                    <span>Offer Successfully Registered</span>
+                  </span>
 
-              <a
-                href={emailUrl}
-                className="w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-xl sm:rounded-2xl bg-[#F6F3EB] hover:bg-[#EFECE2] text-[#1A1208] font-black text-xs sm:text-base text-center border-2 border-[#D4A017]/40 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs"
-              >
-                <span>Claim via Email</span>
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            </div>
+                  <button
+                    onClick={() => setIsEditing(true)}
+                    className="inline-flex items-center gap-1 text-xs font-bold text-[#8A610A] hover:text-[#1A1208] transition-colors cursor-pointer"
+                  >
+                    <Edit3 className="w-3.5 h-3.5" />
+                    <span>Edit Details</span>
+                  </button>
+                </div>
+
+                <h4 className="text-lg sm:text-2xl font-black text-[#1A1208] mb-1">
+                  Congratulations, {formData.fullName}!
+                </h4>
+                <p className="text-xs sm:text-sm text-[#3E7B44] font-semibold mb-4">
+                  Your festive claim for <span className="font-extrabold underline">{offer.headline}</span> is recorded.
+                </p>
+
+                {/* Summary Details */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 bg-white p-3.5 sm:p-4 rounded-xl border border-[#3E7B44]/30 text-xs text-[#1A1208] mb-5 shadow-xs">
+                  <div>
+                    <span className="text-[10px] text-[#7A6652] uppercase font-bold block">WhatsApp</span>
+                    <span className="font-bold">{formData.whatsappNumber}</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-[#7A6652] uppercase font-bold block">Email</span>
+                    <span className="font-bold truncate block">{formData.email}</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-[#7A6652] uppercase font-bold block">Business Category</span>
+                    <span className="font-bold">{formData.businessCategory}</span>
+                  </div>
+                </div>
+
+                {/* Immediate WhatsApp / Email Kickoff Actions */}
+                <div className="text-[11px] sm:text-xs uppercase font-bold text-[#256029] tracking-wider mb-2 text-center sm:text-left">
+                  Connect With TWS Engineering to Activate:
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-xl sm:rounded-2xl bg-[#25D366] hover:bg-[#20BD5A] text-white font-black text-xs sm:text-base text-center active:scale-[0.98] transition-all shadow-[0_6px_20px_rgba(37,211,102,0.3)] flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <span>Connect on WhatsApp</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+
+                  <a
+                    href={emailUrl}
+                    className="w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-xl sm:rounded-2xl bg-white hover:bg-[#F6F3EB] text-[#1A1208] font-black text-xs sm:text-base text-center border-2 border-[#D4A017]/40 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs"
+                  >
+                    <span>Confirm via Email</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            ) : (
+              /* Avail Offer Registration Form */
+              <div className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#FFFDF9] via-[#FAF7F0] to-[#F5EFE3] border-2 border-[#D4A017] shadow-lg">
+                <div className="text-center sm:text-left mb-4 sm:mb-6">
+                  <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-black uppercase tracking-wider text-[#C59114] bg-white border border-[#D4A017]/40 px-3 py-1 rounded-full mb-2 shadow-xs">
+                    <Sparkles className="w-3.5 h-3.5 text-[#C59114]" />
+                    <span>Required to Avail Your Diwali Offer</span>
+                  </span>
+                  <h4 className="text-lg sm:text-2xl font-black text-[#1A1208]">
+                    Fill Details to Avail This Offer
+                  </h4>
+                  <p className="text-xs sm:text-sm text-[#4A3B2C] mt-1">
+                    Enter your business details below so our team can verify your voucher code and initiate your deliverables.
+                  </p>
+                </div>
+
+                {formError && (
+                  <div className="mb-4 p-3 rounded-xl bg-red-50 border border-red-300 text-red-800 text-xs font-bold animate-fadeIn">
+                    {formError}
+                  </div>
+                )}
+
+                <form onSubmit={handleFormSubmit} className="space-y-3.5 sm:space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+                    {/* Full Name */}
+                    <div>
+                      <label className="block text-[11px] sm:text-xs font-bold text-[#1A1208] uppercase tracking-wider mb-1">
+                        Full Name *
+                      </label>
+                      <div className="relative">
+                        <User className="w-4 h-4 text-[#C59114] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                        <input
+                          type="text"
+                          required
+                          value={formData.fullName}
+                          onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                          placeholder="e.g. Rahul Sharma"
+                          className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-xl bg-white border border-[#D4A017]/40 focus:border-[#C59114] focus:ring-2 focus:ring-[#D4A017]/25 text-xs sm:text-sm text-[#1A1208] font-semibold placeholder:text-[#7A6652]/50 outline-none transition-all shadow-xs"
+                        />
+                      </div>
+                    </div>
+
+                    {/* WhatsApp Number */}
+                    <div>
+                      <label className="block text-[11px] sm:text-xs font-bold text-[#1A1208] uppercase tracking-wider mb-1">
+                        WhatsApp Number *
+                      </label>
+                      <div className="relative">
+                        <Phone className="w-4 h-4 text-[#C59114] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                        <input
+                          type="tel"
+                          required
+                          value={formData.whatsappNumber}
+                          onChange={(e) => setFormData({ ...formData, whatsappNumber: e.target.value })}
+                          placeholder="e.g. +91 98765 43210"
+                          className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-xl bg-white border border-[#D4A017]/40 focus:border-[#C59114] focus:ring-2 focus:ring-[#D4A017]/25 text-xs sm:text-sm text-[#1A1208] font-semibold placeholder:text-[#7A6652]/50 outline-none transition-all shadow-xs"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+                    {/* Email Address */}
+                    <div>
+                      <label className="block text-[11px] sm:text-xs font-bold text-[#1A1208] uppercase tracking-wider mb-1">
+                        Email Address *
+                      </label>
+                      <div className="relative">
+                        <Mail className="w-4 h-4 text-[#C59114] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                        <input
+                          type="email"
+                          required
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          placeholder="e.g. rahul@company.com"
+                          className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-xl bg-white border border-[#D4A017]/40 focus:border-[#C59114] focus:ring-2 focus:ring-[#D4A017]/25 text-xs sm:text-sm text-[#1A1208] font-semibold placeholder:text-[#7A6652]/50 outline-none transition-all shadow-xs"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Business Category */}
+                    <div>
+                      <label className="block text-[11px] sm:text-xs font-bold text-[#1A1208] uppercase tracking-wider mb-1">
+                        Business Category *
+                      </label>
+                      <div className="relative">
+                        <Briefcase className="w-4 h-4 text-[#C59114] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                        <select
+                          value={formData.businessCategory}
+                          onChange={(e) => setFormData({ ...formData, businessCategory: e.target.value })}
+                          className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-xl bg-white border border-[#D4A017]/40 focus:border-[#C59114] focus:ring-2 focus:ring-[#D4A017]/25 text-xs sm:text-sm text-[#1A1208] font-semibold outline-none transition-all shadow-xs cursor-pointer"
+                        >
+                          {BUSINESS_CATEGORIES.map((cat) => (
+                            <option key={cat} value={cat}>
+                              {cat}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      className="w-full py-3.5 sm:py-4 px-6 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#C59114] via-[#D4A017] to-[#E5B537] text-white font-black text-sm sm:text-base hover:brightness-105 active:scale-[0.98] transition-all shadow-[0_8px_25px_rgba(197,145,20,0.35)] cursor-pointer flex items-center justify-center gap-2"
+                    >
+                      <Send className="w-4 h-4 sm:w-5 sm:h-5" />
+                      <span>Avail & Confirm My Diwali Offer</span>
+                    </button>
+                    <p className="text-[11px] sm:text-xs text-[#7A6652] text-center mt-2">
+                      🔒 Your information is confidential and will only be used to process your Diwali gift.
+                    </p>
+                  </div>
+                </form>
+              </div>
+            )}
           </div>
         </div>
 
