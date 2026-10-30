@@ -104,7 +104,7 @@ export function DiyaRevealModal({ offer, onClose }: DiyaRevealModalProps) {
 
 Please confirm my offer deliverables!`
   );
-  const whatsappUrl = `https://wa.me/917042859955?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/917275895385?text=${whatsappMessage}`;
 
   return (
     <div
@@ -296,7 +296,7 @@ Please confirm my offer deliverables!`
                       required
                       value={contactNumber}
                       onChange={(e) => setContactNumber(e.target.value)}
-                      placeholder="e.g. 70428 59955"
+                      placeholder="e.g. 7275895385"
                       className="w-full pl-9 pr-3 py-2 rounded-xl bg-white border border-[#D4A017]/40 focus:border-[#C59114] focus:ring-2 focus:ring-[#D4A017]/25 text-xs text-[#1A1208] font-semibold placeholder:text-[#7A6652]/50 outline-none transition-all shadow-xs"
                     />
                   </div>
