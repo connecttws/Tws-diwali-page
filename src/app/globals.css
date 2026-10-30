@@ -46,7 +46,9 @@ html, body {
 .gold-text-shimmer {
   background: linear-gradient(135deg, #8A610A 0%, #C59114 40%, #E5B537 70%, #9E7010 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: #C59114;
 }
 
 .gold-border-refined {
