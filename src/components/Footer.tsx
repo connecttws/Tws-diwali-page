@@ -40,18 +40,6 @@ export function Footer() {
             >
               Pick a Diya
             </a>
-            <a
-              href="#how-it-works"
-              className="text-[#4A3B2C] hover:text-[#C59114] transition-colors"
-            >
-              How It Works
-            </a>
-            <a
-              href="#faq"
-              className="text-[#4A3B2C] hover:text-[#C59114] transition-colors"
-            >
-              Redemption Terms
-            </a>
           </div>
 
           <button

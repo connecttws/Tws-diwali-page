@@ -77,18 +77,6 @@ export function Header({ onPickDiyaClick, isAlreadyOpened = false }: HeaderProps
           >
             {isAlreadyOpened ? "My Diya" : "Pick Diya"}
           </a>
-          <a
-            href="#how-it-works"
-            className="hover:text-[#C59114] hover:underline underline-offset-8 transition-colors whitespace-nowrap shrink-0"
-          >
-            How It Works
-          </a>
-          <a
-            href="#faq"
-            className="hover:text-[#C59114] hover:underline underline-offset-8 transition-colors whitespace-nowrap shrink-0"
-          >
-            FAQ
-          </a>
         </nav>
 
         {/* Zone 3: Primary Actions & Sound Toggle */}

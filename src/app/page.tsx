@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { DiyaSelectionGrid } from "@/components/DiyaSelectionGrid";
-import { CampaignDetails } from "@/components/CampaignDetails";
-import { FAQSection } from "@/components/FAQSection";
 import { Footer } from "@/components/Footer";
 import { FestiveLights } from "@/components/FestiveLights";
 import { getSavedOpenedDiya, saveOpenedDiya } from "@/data/diyaOffers";
@@ -63,12 +61,6 @@ export default function HomePage() {
           isAlreadyOpened={isAlreadyOpened}
           onOpenDiya={handleOpenDiya}
         />
-
-        {/* How It Works & Transparency */}
-        <CampaignDetails onPickDiyaClick={scrollToDiyaSelection} />
-
-        {/* Frequently Asked Questions */}
-        <FAQSection />
       </main>
 
       {/* Footer */}

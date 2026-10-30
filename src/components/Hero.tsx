@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { Flame, Sparkles, ArrowDown, Award, Gift, ShieldCheck } from "lucide-react";
+import { Flame, Sparkles, ArrowDown, Award, ShieldCheck } from "lucide-react";
 
 // Dynamically import ThreeDiyaHero with SSR disabled to guarantee smooth WebGL execution
 const ThreeDiyaHero = dynamic(
@@ -39,36 +39,19 @@ export function Hero({ onPickDiyaClick }: HeroProps) {
               <span>TWS Diwali Dhamaka is Here</span>
             </div>
 
-            {/* Headline with selective gold emphasis */}
-            <h1 className="text-2xl xs:text-3xl sm:text-4xl lg:text-[2.45rem] xl:text-[2.95rem] font-black tracking-tight text-[#1A1208] leading-[1.15] sm:leading-[1.12] mb-2 sm:mb-2.5">
-              This Diwali, your{" "}
-              <span className="gold-text-shimmer font-black">
-                lucky moment
+            {/* Headline with mobile-optimized 3-line alignment and gold shimmer emphasis */}
+            <h1 className="text-[1.35rem] sm:text-3xl md:text-4xl lg:text-[2.45rem] xl:text-[2.95rem] font-black tracking-tight text-[#1A1208] leading-[1.24] sm:leading-[1.14] mb-3 sm:mb-3.5">
+              <span className="block sm:inline">This Diwali, you could win</span>{" "}
+              <span className="gold-text-shimmer font-black block sm:inline">
+                ₹50K worth of services for free —
               </span>{" "}
-              awaits.
+              <span className="block sm:inline">if luck is on your side.</span>
             </h1>
 
             {/* Supporting Copy */}
-            <p className="text-xs xs:text-sm sm:text-base lg:text-[1.05rem] text-[#4A3B2C] font-normal leading-relaxed mb-3 sm:mb-4 max-w-xl">
+            <p className="text-xs xs:text-sm sm:text-base lg:text-[1.05rem] text-[#4A3B2C] font-normal leading-relaxed mb-5 sm:mb-6 max-w-xl">
               Choose a diya. Reveal your surprise. Celebrate the possibilities.
             </p>
-
-            {/* Campaign Promise Box: Pure White & Gold Card */}
-            <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#FFFFFF] border border-[#D4A017]/35 mb-3.5 sm:mb-4 w-full max-w-xl shadow-[0_6px_20px_rgba(197,145,20,0.06)]">
-              <div className="flex items-start gap-2.5 sm:gap-3">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-br from-[#D4A017] to-[#E5B537] flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
-                  <Gift className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-extrabold text-xs xs:text-sm sm:text-base lg:text-[1.05rem] text-[#1A1208] leading-snug">
-                    Win ₹50K worth of premium services for free
-                  </h3>
-                  <p className="text-[11px] sm:text-sm text-[#4A3B2C] mt-0.5 leading-relaxed font-normal">
-                    You could win ₹50K worth of services for free — if luck is on your side. Every diya holds a genuine architectural, design, or engineering surprise.
-                  </p>
-                </div>
-              </div>
-            </div>
 
             {/* Primary CTA and Microcopy */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3.5 w-full sm:w-auto mb-1">
