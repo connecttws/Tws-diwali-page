@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Flame, CheckCircle2, Lock, Copy, Check, ArrowRight, ShieldCheck } from "lucide-react";
 import { DIYA_OFFERS, DiyaOffer } from "@/data/diyaOffers";
 import { DiyaCard } from "./DiyaCard";
@@ -20,7 +18,6 @@ export function DiyaSelectionGrid({
   isAlreadyOpened,
   onOpenDiya,
 }: DiyaSelectionGridProps) {
-  const router = useRouter();
   const [copied, setCopied] = useState(false);
   const [lockedNotice, setLockedNotice] = useState<string | null>(null);
   const [modalOffer, setModalOffer] = useState<DiyaOffer | null>(null);
@@ -50,10 +47,6 @@ export function DiyaSelectionGrid({
     if (offer) {
       setModalOffer(offer);
     }
-  };
-
-  const handleProceedToThankYou = () => {
-    router.push("/thank-you");
   };
 
   const handleCopyVoucher = async () => {
@@ -175,13 +168,14 @@ export function DiyaSelectionGrid({
                     )}
                   </button>
 
-                  <Link
-                    href="/thank-you"
+                  <button
+                    type="button"
+                    onClick={() => openedOffer && setModalOffer(openedOffer)}
                     className="w-full xs:w-auto px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-gradient-to-r from-[#C59114] via-[#D4A017] to-[#E5B537] text-white font-black text-xs sm:text-sm hover:brightness-105 active:scale-95 transition-all shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
                   >
-                    <span>View Thank You Page</span>
+                    <span>Avail / View Offer</span>
                     <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>
@@ -227,11 +221,10 @@ export function DiyaSelectionGrid({
         )}
       </div>
 
-      {/* Opening Reveal Modal */}
+      {/* Opening Reveal & Avail Form Modal */}
       {modalOffer && (
         <DiyaRevealModal
           offer={modalOffer}
-          onProceedToThankYou={handleProceedToThankYou}
           onClose={() => setModalOffer(null)}
         />
       )}

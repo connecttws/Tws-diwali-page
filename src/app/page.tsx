@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { DiyaSelectionGrid } from "@/components/DiyaSelectionGrid";
@@ -10,7 +9,6 @@ import { FestiveLights } from "@/components/FestiveLights";
 import { getSavedOpenedDiya, saveOpenedDiya } from "@/data/diyaOffers";
 
 export default function HomePage() {
-  const router = useRouter();
   const [openedDiyaId, setOpenedDiyaId] = useState<string | null>(null);
   const [isAlreadyOpened, setIsAlreadyOpened] = useState<boolean>(false);
 

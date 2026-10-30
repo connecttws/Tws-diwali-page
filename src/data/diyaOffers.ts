@@ -270,8 +270,8 @@ export function getDiyaOffer(id: string): DiyaOffer | undefined {
 export interface ClaimedLeadData {
   fullName: string;
   whatsappNumber: string;
-  email: string;
-  businessCategory: string;
+  email?: string;
+  businessCategory?: string;
   voucherCode: string;
   diyaId: string;
   claimedAt: string;
