@@ -39,11 +39,13 @@ export function Hero({ onPickDiyaClick }: HeroProps) {
               <span>TWS Diwali Dhamaka is Here</span>
             </div>
 
-            {/* Headline with mobile-optimized 3-line alignment and gold shimmer emphasis */}
-            <h1 className="text-[1.35rem] sm:text-3xl md:text-4xl lg:text-[2.45rem] xl:text-[2.95rem] font-black tracking-tight text-[#1A1208] leading-[1.24] sm:leading-[1.14] mb-3 sm:mb-3.5">
-              <span className="block sm:inline">This Diwali, you could win</span>{" "}
-              <span className="gold-text-shimmer font-black block sm:inline">
-                ₹50K worth of services for free —
+            {/* Headline with mobile-optimized 5-line alignment and gold shimmer emphasis */}
+            <h1 className="text-[1.75rem] xs:text-[1.95rem] sm:text-3xl md:text-4xl lg:text-[2.45rem] xl:text-[2.95rem] font-black tracking-tight text-[#1A1208] leading-[1.2] sm:leading-[1.14] mb-3.5 sm:mb-4">
+              <span className="block sm:inline">This Diwali,</span>{" "}
+              <span className="block sm:inline">you could win</span>{" "}
+              <span className="gold-text-shimmer font-black">
+                <span className="block sm:inline">₹50K worth of</span>{" "}
+                <span className="block sm:inline">services for free —</span>
               </span>{" "}
               <span className="block sm:inline">if luck is on your side.</span>
             </h1>
