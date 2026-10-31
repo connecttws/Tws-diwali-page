@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
-import { Sparkles, Check, Flame, X, User, Phone, Copy, CheckCircle2, Send, ExternalLink, Edit3, Loader2 } from "lucide-react";
+import { Sparkles, Check, Flame, X, User, Phone, Copy, CheckCircle2, Send, ExternalLink, Loader2 } from "lucide-react";
 import { DiyaOffer, saveClaimedLead, getSavedOpenedDiya, ClaimedLeadData } from "@/data/diyaOffers";
 import { playDiwaliRevealChime } from "@/utils/audio";
 
@@ -17,7 +17,6 @@ export function DiyaRevealModal({ offer, onClose }: DiyaRevealModalProps) {
   const [contactNumber, setContactNumber] = useState("");
   const [formError, setFormError] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -103,7 +102,6 @@ export function DiyaRevealModal({ offer, onClose }: DiyaRevealModalProps) {
     } finally {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      setIsEditing(false);
 
       try {
         confetti({
@@ -214,22 +212,14 @@ Please confirm my offer deliverables!`
         {/* FORM: Avail your offer here..... (Name & Contact Number)                 */}
         {/* ========================================================================= */}
         <div className="relative z-10 text-left">
-          {isSubmitted && !isEditing ? (
+          {isSubmitted ? (
             /* Submission Success State */
             <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-[#F4FAF5] via-[#EDF7EE] to-[#E6F4E8] border-2 border-[#3E7B44] shadow-sm animate-fadeIn">
-              <div className="flex items-center justify-between gap-2 mb-2">
+              <div className="mb-2">
                 <span className="inline-flex items-center gap-1 text-[11px] font-black uppercase text-[#256029] bg-white px-2.5 py-0.5 rounded-full border border-[#3E7B44]/30">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#3E7B44]" />
                   <span>Offer Registered</span>
                 </span>
-                <button
-                  type="button"
-                  onClick={() => setIsEditing(true)}
-                  className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8A610A] hover:text-[#1A1208] transition-colors cursor-pointer"
-                >
-                  <Edit3 className="w-3 h-3" />
-                  <span>Edit</span>
-                </button>
               </div>
 
               <h4 className="text-base sm:text-lg font-black text-[#1A1208] mb-0.5">
