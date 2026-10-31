@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
-import { Sparkles, Check, Flame, X, User, Phone, Copy, CheckCircle2, Send, ExternalLink, Edit3 } from "lucide-react";
+import { Sparkles, Check, Flame, X, User, Phone, Copy, CheckCircle2, Send, ExternalLink, Edit3, Loader2 } from "lucide-react";
 import { DiyaOffer, saveClaimedLead, getSavedOpenedDiya, ClaimedLeadData } from "@/data/diyaOffers";
 import { playDiwaliRevealChime } from "@/utils/audio";
 
@@ -18,6 +18,7 @@ export function DiyaRevealModal({ offer, onClose }: DiyaRevealModalProps) {
   const [formError, setFormError] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     playDiwaliRevealChime();
@@ -54,7 +55,7 @@ export function DiyaRevealModal({ offer, onClose }: DiyaRevealModalProps) {
     }
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!fullName.trim()) {
@@ -69,6 +70,7 @@ export function DiyaRevealModal({ offer, onClose }: DiyaRevealModalProps) {
     }
 
     setFormError("");
+    setIsSubmitting(true);
 
     const lead: ClaimedLeadData = {
       fullName: fullName.trim(),
@@ -78,19 +80,41 @@ export function DiyaRevealModal({ offer, onClose }: DiyaRevealModalProps) {
       claimedAt: new Date().toISOString(),
     };
 
+    // Save locally
     saveClaimedLead(lead);
-    setIsSubmitted(true);
-    setIsEditing(false);
 
+    // Send lead to Google Sheet API
     try {
-      confetti({
-        particleCount: 90,
-        spread: 85,
-        origin: { y: 0.6 },
-        colors: ["#25D366", "#D4A017", "#F5D372", "#FFFFFF"],
+      await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: fullName.trim(),
+          phone: contactNumber.trim(),
+          diyaNumber: offer.number,
+          diyaName: offer.name,
+          offerHeadline: offer.headline,
+          offerValue: offer.valueAmount,
+          voucherCode: offer.voucherCode,
+        }),
       });
-    } catch {
-      // Safe catch
+    } catch (err) {
+      console.error("Failed to post lead to Google Sheet API:", err);
+    } finally {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      setIsEditing(false);
+
+      try {
+        confetti({
+          particleCount: 90,
+          spread: 85,
+          origin: { y: 0.6 },
+          colors: ["#25D366", "#D4A017", "#F5D372", "#FFFFFF"],
+        });
+      } catch {
+        // Safe catch
+      }
     }
   };
 
@@ -306,10 +330,20 @@ Please confirm my offer deliverables!`
                 <div className="pt-1.5">
                   <button
                     type="submit"
-                    className="w-full py-3 px-5 rounded-xl bg-gradient-to-r from-[#C59114] via-[#D4A017] to-[#E5B537] text-white font-black text-xs sm:text-sm hover:brightness-105 active:scale-[0.98] transition-all shadow-[0_6px_20px_rgba(197,145,20,0.3)] cursor-pointer flex items-center justify-center gap-1.5"
+                    disabled={isSubmitting}
+                    className="w-full py-3 px-5 rounded-xl bg-gradient-to-r from-[#C59114] via-[#D4A017] to-[#E5B537] text-white font-black text-xs sm:text-sm hover:brightness-105 active:scale-[0.98] transition-all shadow-[0_6px_20px_rgba(197,145,20,0.3)] cursor-pointer flex items-center justify-center gap-1.5 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    <Send className="w-3.5 h-3.5" />
-                    <span>Submit</span>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                        <span>Submitting...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-3.5 h-3.5" />
+                        <span>Submit</span>
+                      </>
+                    )}
                   </button>
                   <p className="text-[10px] text-[#7A6652] text-center mt-1.5">
                     🔒 Your details are safe with TWS. We will reach out to confirm your offer.
