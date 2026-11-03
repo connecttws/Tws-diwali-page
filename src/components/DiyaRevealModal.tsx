@@ -117,7 +117,16 @@ export function DiyaRevealModal({ offer, onClose }: DiyaRevealModalProps) {
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello TWS Team! I have availed my Diwali Dhamaka Offer:
+    offer.isBetterLuck
+      ? `Hello TWS Team! I opened Diya ${offer.number} (${offer.name}) in Diwali Bonanza:
+- Name: ${fullName || "TWS Visitor"}
+- Contact Number: ${contactNumber || "Shared on Chat"}
+- Diya: ${offer.number} (${offer.name})
+- Result: ${offer.headline}
+- Voucher Code: ${offer.voucherCode}
+
+I would love to connect for the complimentary 30-minute strategy consultation!`
+      : `Hello TWS Team! I have availed my Diwali Bonanza Offer:
 - Name: ${fullName || "TWS Client"}
 - Contact Number: ${contactNumber || "Shared on Chat"}
 - Diya: ${offer.number} (${offer.name})
@@ -153,7 +162,7 @@ Please confirm my offer deliverables!`
         {/* Top Auspicious Badge */}
         <div className="inline-flex items-center justify-center gap-1.5 px-3 py-1 rounded-full bg-[#FCF4D9] border border-[#D4A017]/40 text-[#C59114] text-[10px] sm:text-xs font-black tracking-widest uppercase mx-auto mb-2 relative z-10 shadow-xs">
           <Sparkles className="w-3.5 h-3.5 text-[#C59114] fill-[#C59114]" />
-          <span>Diya {offer.number} Opened · Festive Surprise!</span>
+          <span>Diya {offer.number} Opened · Diwali Bonanza!</span>
         </div>
 
         {/* Diya Name & Small Flame Art */}
@@ -168,7 +177,11 @@ Please confirm my offer deliverables!`
 
         {/* Offer Headline & Value Amount */}
         <div className="my-2 sm:my-3 py-2 sm:py-3 border-y border-[#D4A017]/20 relative z-10">
-          <div className="text-[10px] sm:text-xs font-black uppercase text-[#3E7B44] bg-[#3E7B44]/15 px-3 py-0.5 rounded-full inline-block mb-1.5 border border-[#3E7B44]/30">
+          <div className={`text-[10px] sm:text-xs font-black uppercase px-3 py-0.5 rounded-full inline-block mb-1.5 border ${
+            offer.isBetterLuck
+              ? "text-[#C59114] bg-[#FCF4D9] border-[#D4A017]/40"
+              : "text-[#3E7B44] bg-[#3E7B44]/15 border-[#3E7B44]/30"
+          }`}>
             {offer.valueAmount}
           </div>
           <h2 className="text-lg sm:text-2xl font-black text-[#1A1208] leading-snug mb-1">
@@ -226,7 +239,9 @@ Please confirm my offer deliverables!`
                 Congratulations, {fullName}!
               </h4>
               <p className="text-[11px] sm:text-xs text-[#3E7B44] font-semibold mb-3">
-                Your Diwali claim for <span className="underline font-bold">{offer.headline}</span> is recorded.
+                {offer.isBetterLuck
+                  ? "Your request for a free strategy consultation & Diwali wishes is recorded."
+                  : <>Your Diwali claim for <span className="underline font-bold">{offer.headline}</span> is recorded.</>}
               </p>
 
               <div className="bg-white p-2.5 rounded-xl border border-[#3E7B44]/30 text-xs text-[#1A1208] mb-3.5 space-y-1">
@@ -266,10 +281,12 @@ Please confirm my offer deliverables!`
             <div className="p-3.5 sm:p-5 rounded-2xl bg-gradient-to-b from-[#FFFDF9] via-[#FAF7F0] to-[#F5EFE3] border-2 border-[#D4A017] shadow-sm">
               <div className="mb-3 text-center sm:text-left">
                 <h4 className="text-base sm:text-lg font-black text-[#1A1208]">
-                  Avail your offer here.....
+                  {offer.isBetterLuck ? "Claim Your Free 30-Min Strategy Call" : "Avail your offer here....."}
                 </h4>
                 <p className="text-[11px] sm:text-xs text-[#4A3B2C] mt-0.5">
-                  Enter your name and contact number to claim your Diwali gift.
+                  {offer.isBetterLuck
+                    ? "Enter your name and contact number to claim a free strategy session."
+                    : "Enter your name and contact number to claim your Diwali gift."}
                 </p>
               </div>
 

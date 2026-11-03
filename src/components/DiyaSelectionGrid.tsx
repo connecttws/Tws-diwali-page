@@ -123,8 +123,14 @@ export function DiyaSelectionGrid({
                 </span>
               </div>
 
-              <span className="text-xs font-black text-[#3E7B44] bg-[#3E7B44]/15 px-2.5 py-1 rounded-lg border border-[#3E7B44]/30 shrink-0">
-                {openedOffer.valueAmount} · 100% Free
+              <span
+                className={`text-xs font-black px-2.5 py-1 rounded-lg border shrink-0 ${
+                  openedOffer.isBetterLuck
+                    ? "text-[#C59114] bg-[#FCF4D9] border-[#D4A017]/40"
+                    : "text-[#3E7B44] bg-[#3E7B44]/15 border-[#3E7B44]/30"
+                }`}
+              >
+                {openedOffer.valueAmount}
               </span>
             </div>
 

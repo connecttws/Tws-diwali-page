@@ -23,23 +23,23 @@ export const DIYA_OFFERS: DiyaOffer[] = [
     number: "01",
     name: "Ananta Diya",
     hindiName: "अनंत दीप",
-    meaning: "The Lamp of Infinite Creativity",
-    headline: "5 Free Reels Edits",
-    tagline: "5 free Reels edits — kisi bhi service ke saath.",
-    valueAmount: "5 Free Reels",
-    numericValue: 15000,
-    badge: "Free Service Add-On",
+    meaning: "The Lamp of Infinite Growth",
+    headline: "BUY 3 MONTHS, GET 3 MONTHS FREE!",
+    tagline: "₹25,000 – 3 Months Lead Generation Package: Get 6 Months of Lead Generation Services for just ₹25,000!",
+    valueAmount: "Buy 3M, Get 3M Free",
+    numericValue: 25000,
+    badge: "Buy 3 Months, Get 3 Months Free!",
     deliverables: [
-      "5 professionally edited Reels / Shorts for your brand",
-      "Dynamic typography, viral captions, and sound design",
-      "Valid with any TWS digital, marketing, or web service"
+      "3 Months Lead Generation Package + 3 Months 100% FREE",
+      "Get full 6 Months of continuous Lead Generation Services",
+      "Special festive pricing: Total package for just ₹25,000",
+      "Dedicated outreach campaign optimization and qualified sales prospects"
     ],
     terms: [
-      "Valid for 60 days from Diwali 2026",
-      "Applicable alongside any active TWS service package",
-      "Can be redeemed immediately by quoting voucher code"
+      "Valid for Diwali Bonanza 2026",
+      "Quote voucher code to activate your 6-month package"
     ],
-    voucherCode: "DHAMAKA-5REELS-FREE",
+    voucherCode: "BONANZA-3M-LEADS-FREE",
     accentColor: "#F5BD55"
   },
   {
@@ -47,22 +47,23 @@ export const DIYA_OFFERS: DiyaOffer[] = [
     number: "02",
     name: "Surya Diya",
     hindiName: "सूर्य दीप",
-    meaning: "The Lamp of Outreach & Energy",
-    headline: "20 Leads Par Free Calling",
-    tagline: "20 leads par free calling — hum leads ko call karke meetings book karenge.",
-    valueAmount: "20 Free Calls",
-    numericValue: 20000,
-    badge: "Free Calling & Meetings",
+    meaning: "The Lamp of Viral Reach & Radiance",
+    headline: "BUY 10 REELS, GET 10 FREE!",
+    tagline: "₹10,000 – 10-Reel Editing Package: Get 20 Professionally Edited Reels for just ₹10,000!",
+    valueAmount: "10 + 10 Free Reels",
+    numericValue: 10000,
+    badge: "Buy 10 Reels, Get 10 Free!",
     deliverables: [
-      "Dedicated outbound calling to 20 prospective business leads",
-      "Custom high-converting calling script tailored to your offer",
-      "Direct qualified calendar meeting bookings for your sales team"
+      "10-Reel Editing Package + 10 Extra Reels 100% FREE",
+      "Total 20 professionally edited high-retention Reels / Shorts",
+      "Dynamic captions, viral hooks, sound design & color grading",
+      "Special festive pricing: 20 Reels for just ₹10,000"
     ],
     terms: [
-      "Valid for 45 days from issue date",
-      "Lead list provided by client or sourced via campaign"
+      "Valid for Diwali Bonanza 2026",
+      "Quote voucher code to claim your 20-reel package"
     ],
-    voucherCode: "DHAMAKA-20LEADS-CALL",
+    voucherCode: "BONANZA-10PLUS10-REELS",
     accentColor: "#FF7A36"
   },
   {
@@ -70,22 +71,23 @@ export const DIYA_OFFERS: DiyaOffer[] = [
     number: "03",
     name: "Tejas Diya",
     hindiName: "तेजस दीप",
-    meaning: "The Lamp of Value & Radiance",
-    headline: "30% OFF on Any Service",
-    tagline: "30% off — kisi bhi service ki final price par.",
+    meaning: "The Lamp of Festive Prosperity",
+    headline: "FLAT 30% OFF",
+    tagline: "Get Flat 30% OFF on Any Social Media Management or Lead Generation Package!",
     valueAmount: "Flat 30% OFF",
-    numericValue: 30000,
-    badge: "Flat 30% Discount",
+    numericValue: 30,
+    badge: "Flat 30% OFF on SMM or Leads",
     deliverables: [
-      "Flat 30% discount applied directly to your final project price",
-      "Applicable across web development, design, branding, or marketing",
-      "No upper cap — maximum festive savings on your project"
+      "Flat 30% instant discount on your chosen service retainer",
+      "Applicable on Any Social Media Management package",
+      "Applicable on Any Lead Generation package",
+      "Zero hidden conditions — maximum festive savings on agency services"
     ],
     terms: [
-      "Valid for 60 days from Diwali 2026",
-      "Applicable to new project contracts and renewals"
+      "Valid for Diwali Bonanza 2026",
+      "Applicable on any SMM or Lead Generation package"
     ],
-    voucherCode: "DHAMAKA-FLAT30-OFF",
+    voucherCode: "BONANZA-FLAT30-OFF",
     accentColor: "#F5BD55"
   },
   {
@@ -93,23 +95,23 @@ export const DIYA_OFFERS: DiyaOffer[] = [
     number: "04",
     name: "Lakshmi Diya",
     hindiName: "लक्ष्मी दीप",
-    meaning: "The Lamp of Digital Prosperity",
-    headline: "Free Custom Landing Page",
-    tagline: "Free landing page — aap apni requirement ke hisaab se content/features choose kar sakte hain.",
-    valueAmount: "100% Free Landing Page",
-    numericValue: 35000,
-    badge: "Grand Free Landing Page",
-    isGrandPrize: true,
+    meaning: "The Lamp of Business Abundance",
+    headline: "BUY 100, GET 50 FREE!",
+    tagline: "₹18,000 – 100 Appointments Management Package: Get 150 Appointments Managed for just ₹18,000!",
+    valueAmount: "100 + 50 Free Appts",
+    numericValue: 18000,
+    badge: "Buy 100, Get 50 Free!",
     deliverables: [
-      "Custom high-converting landing page built for your business",
-      "Complete freedom to choose your required content, sections, and features",
-      "Mobile-optimized, ultra-fast performance, and WhatsApp/lead capture"
+      "100 Appointments Management Package + 50 Extra FREE",
+      "Total 150 qualified appointments managed end-to-end",
+      "Calendar scheduling, prospect follow-ups, and reminder notifications",
+      "Special festive pricing: 150 appointments for just ₹18,000"
     ],
     terms: [
-      "Valid for 60 days from Diwali 2026",
-      "Includes UI design, modern responsive coding, and launch support"
+      "Valid for Diwali Bonanza 2026",
+      "Quote voucher code to activate 150 appointments"
     ],
-    voucherCode: "DHAMAKA-FREE-LANDINGPAGE",
+    voucherCode: "BONANZA-100PLUS50-APPT",
     accentColor: "#E5B537"
   },
   {
@@ -117,22 +119,23 @@ export const DIYA_OFFERS: DiyaOffer[] = [
     number: "05",
     name: "Shakti Diya",
     hindiName: "शक्ति दीप",
-    meaning: "The Lamp of Creator Power",
-    headline: "2 Creators Ke Final-Edited Videos",
-    tagline: "2 creators ke final-edited videos — apne brand ke liye, jahan chahein use karein.",
-    valueAmount: "2 Creator Videos",
-    numericValue: 25000,
-    badge: "2 Creator Videos Free",
+    meaning: "The Lamp of Sacred Festive Blessings",
+    headline: "BETTER LUCK NEXT TIME!",
+    tagline: "Thank you for celebrating Diwali with TWS! May this festive season bring you and your business boundless joy, light, and prosperity.",
+    valueAmount: "Diwali Blessing",
+    numericValue: 0,
+    badge: "Festive Blessing",
+    isBetterLuck: true,
     deliverables: [
-      "2 authentic creator videos produced for your brand or product",
-      "Script concept, creator management, and final video editing",
-      "Full commercial rights to use across Instagram, Meta ads, and web"
+      "Auspicious festive Diwali blessing from the entire TWS family",
+      "Complimentary 30-minute business audit & strategy consultation",
+      "Priority access to upcoming seasonal business toolkits and guides"
     ],
     terms: [
-      "Valid for 45 days from issue date",
-      "Creators selected to match your specific industry niche"
+      "Valid for Diwali Bonanza 2026",
+      "Feel free to connect with our team on WhatsApp anytime"
     ],
-    voucherCode: "DHAMAKA-2CREATOR-VID",
+    voucherCode: "BONANZA-SHUBH-DIWALI-1",
     accentColor: "#E65C00"
   },
   {
@@ -140,22 +143,23 @@ export const DIYA_OFFERS: DiyaOffer[] = [
     number: "06",
     name: "Prana Diya",
     hindiName: "प्राण दीप",
-    meaning: "The Lamp of Longevity & Growth",
-    headline: "3-Month Package Par 3 Months Free",
-    tagline: "3-month package par 3 months free — get 6 months of full growth for the price of 3.",
-    valueAmount: "3 Months Free",
-    numericValue: 50000,
-    badge: "Buy 3, Get 3 Free",
+    meaning: "The Lamp of Vital Growth",
+    headline: "BUY LEAD GENERATION, GET 50 FREE!",
+    tagline: "₹25,000 – Lead Generation Package: Purchase the Lead Generation Package and Get 50 Appointments Management FREE!",
+    valueAmount: "50 Free Appts",
+    numericValue: 25000,
+    badge: "50 Free Appointments Included",
     deliverables: [
-      "Pay for 3 months retainer and receive next 3 months 100% free",
-      "Continuous marketing, development, or creative execution",
-      "Massive 6-month growth runway with dedicated agency support"
+      "Comprehensive Lead Generation Package (₹25,000)",
+      "50 Appointments Management service included 100% FREE",
+      "Targeted high-intent outreach + calendar booking coordination",
+      "Zero extra fees for meeting scheduling and lead confirmations"
     ],
     terms: [
-      "Valid for 60 days from Diwali 2026",
-      "Applicable to social media, performance marketing, or tech retainers"
+      "Valid for Diwali Bonanza 2026",
+      "Quote voucher code upon package activation"
     ],
-    voucherCode: "DHAMAKA-3PLUS3-FREE",
+    voucherCode: "BONANZA-LEADS-50APPT",
     accentColor: "#C59114"
   },
   {
@@ -163,22 +167,23 @@ export const DIYA_OFFERS: DiyaOffer[] = [
     number: "07",
     name: "Kanti Diya",
     hindiName: "कांति दीप",
-    meaning: "The Lamp of Local Prominence",
-    headline: "2 Months Free GMB Profile Management",
-    tagline: "2 months free GMB profile management — social media ya lead-generation package ke saath.",
-    valueAmount: "2 Months Free GMB",
-    numericValue: 18000,
-    badge: "2 Months Free GMB",
+    meaning: "The Lamp of Brilliant Presence",
+    headline: "BUY 3 MONTHS, GET 1 MONTH FREE!",
+    tagline: "₹36,000 – 3 Months Social Media Management Package: Get 4 Months of Social Media Management for just ₹36,000!",
+    valueAmount: "Buy 3M, Get 1M Free",
+    numericValue: 36000,
+    badge: "Buy 3 Months, Get 1 Month Free!",
     deliverables: [
-      "Google Business Profile optimization and local map pack ranking",
-      "Weekly post updates, keyword-rich photo posts, and review strategy",
-      "Complimentary with any social media or lead generation package"
+      "3 Months Social Media Management Package + 1 Month 100% FREE",
+      "Get full 4 Months of high-impact Social Media Management for ₹36,000",
+      "Complete content calendar, graphic design, reel ideation, and posting",
+      "Dedicated social media manager and monthly growth analytics"
     ],
     terms: [
-      "Valid for 60 days from Diwali 2026",
-      "Applies alongside any new social media or lead-generation engagement"
+      "Valid for Diwali Bonanza 2026",
+      "Applicable on Instagram, Facebook & LinkedIn"
     ],
-    voucherCode: "DHAMAKA-2M-GMB-FREE",
+    voucherCode: "BONANZA-3M-SMM-1MFREE",
     accentColor: "#FF9926"
   },
   {
@@ -186,22 +191,23 @@ export const DIYA_OFFERS: DiyaOffer[] = [
     number: "08",
     name: "Jyoti Diya",
     hindiName: "ज्योति दीप",
-    meaning: "The Lamp of Sales Enlightenment",
-    headline: "Exclusive Sales Guide (Worth ₹2,500)",
-    tagline: "Sales Guide, worth ₹2,500 — actionable sales conversion and objection-handling blueprint.",
-    valueAmount: "Worth ₹2,500",
-    numericValue: 2500,
-    badge: "Worth ₹2,500 · Free Access",
+    meaning: "The Lamp of Auspicious Fortune",
+    headline: "BETTER LUCK NEXT TIME!",
+    tagline: "Thank you for celebrating Diwali with TWS! May this festival of lights illuminate your journey with success and good fortune.",
+    valueAmount: "Diwali Blessing",
+    numericValue: 0,
+    badge: "Festive Blessing",
+    isBetterLuck: true,
     deliverables: [
-      "Proven high-ticket closing scripts and sales psychology framework",
-      "Step-by-step objection handling templates for consultations",
-      "Actionable sales blueprint worth ₹2,500 delivered straight to your inbox"
+      "Warm festive Diwali greetings from TWS founders and team",
+      "Complimentary 30-minute growth strategy consultation call",
+      "Exclusive seasonal business resources and framework guides"
     ],
     terms: [
-      "Instant lifetime digital access upon registration",
-      "Includes implementation checklist and objection cheat-sheet"
+      "Valid for Diwali Bonanza 2026",
+      "Reach out to our team on WhatsApp anytime"
     ],
-    voucherCode: "DHAMAKA-SALES-GUIDE",
+    voucherCode: "BONANZA-SHUBH-DIWALI-2",
     accentColor: "#F5BD55"
   },
   {
@@ -209,23 +215,24 @@ export const DIYA_OFFERS: DiyaOffer[] = [
     number: "09",
     name: "Shanti Diya",
     hindiName: "शांति दीप",
-    meaning: "The Lamp of Festive Blessing",
-    headline: "Better Luck Next Time!",
-    tagline: "Thank you for celebrating Diwali with TWS! May this festive season bring you and your business boundless joy and prosperity.",
-    valueAmount: "Diwali Blessing",
-    numericValue: 0,
-    badge: "Festive Token",
-    isBetterLuck: true,
+    meaning: "The Lamp of Digital Elevation",
+    headline: "BUY 15 PREMIUM REELS, GET A FREE LANDING PAGE!",
+    tagline: "₹15,000 – 15 Premium Reel Editing Package: Get a Customised Business Landing Page absolutely FREE!",
+    valueAmount: "Free Landing Page Included",
+    numericValue: 15000,
+    badge: "Free Landing Page Included!",
+    isGrandPrize: true,
     deliverables: [
-      "Auspicious festive blessing from the entire TWS engineering family",
-      "Complimentary 30-minute growth strategy consultation with TWS",
-      "Priority access to upcoming seasonal business resources and workshops"
+      "15 Premium Reel Editing Package (₹15,000)",
+      "Customised Business Landing Page designed & built absolutely FREE",
+      "High-converting responsive landing page with WhatsApp / lead capture",
+      "Cinematic reel editing with engaging typography, hooks, and sound design"
     ],
     terms: [
-      "Free 30-min strategy session valid for 30 days",
-      "Connect with our founders anytime on WhatsApp"
+      "Valid for Diwali Bonanza 2026",
+      "Landing page design and build delivered alongside reel package"
     ],
-    voucherCode: "DHAMAKA-SHUBH-DIWALI",
+    voucherCode: "BONANZA-15REELS-FREELP",
     accentColor: "#E5B537"
   },
   {
@@ -233,22 +240,23 @@ export const DIYA_OFFERS: DiyaOffer[] = [
     number: "10",
     name: "Vijaya Diya",
     hindiName: "विजय दीप",
-    meaning: "The Lamp of Social Victory",
-    headline: "1 Month of Social Media Free",
-    tagline: "1 month of social media free — 1 paid month lene par.",
-    valueAmount: "1 Month Free SMM",
-    numericValue: 25000,
-    badge: "Buy 1 Month, Get 1 Free",
+    meaning: "The Lamp of Festive Victory",
+    headline: "BUY ANY PACKAGE, GET 50% OFF ON ADD-ONS!",
+    tagline: "Purchase Any Service Package and Unlock Flat 50% OFF on Additional Services and Add-ons.",
+    valueAmount: "50% OFF Add-Ons",
+    numericValue: 50,
+    badge: "Flat 50% OFF on Add-Ons",
     deliverables: [
-      "Full month social media content calendar, design, and posting",
-      "Buy 1 month of social media and get the next month 100% free",
-      "Custom graphics, reel ideation, captions, and hashtag strategy"
+      "Purchase any primary TWS service package (SMM, Leads, Reels, Dev)",
+      "Unlock Flat 50% OFF on any additional services and add-ons",
+      "Valid for landing pages, extra reels, CRM integration, or campaigns",
+      "Maximum flexibility to bundle high-value agency services at half price"
     ],
     terms: [
-      "Valid for 60 days from Diwali 2026",
-      "Valid for Instagram, LinkedIn, and Facebook brand channels"
+      "Valid for Diwali Bonanza 2026",
+      "Quote voucher code when adding secondary services"
     ],
-    voucherCode: "DHAMAKA-1M-SMM-FREE",
+    voucherCode: "BONANZA-50OFF-ADDONS",
     accentColor: "#FFD98A"
   }
 ];

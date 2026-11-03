@@ -164,7 +164,7 @@ export function DiyaCard({ offer, isOpened = false, isLocked = false, onSelect }
       {/* Card Info */}
       <div className="w-full text-center z-10 px-0.5">
         <h4
-          className={`font-bold text-xs xs:text-sm sm:text-base md:text-lg tracking-tight transition-colors leading-snug line-clamp-1 xs:line-clamp-none ${
+          className={`font-bold text-xs xs:text-sm sm:text-base md:text-lg tracking-tight transition-colors leading-snug line-clamp-2 ${
             isOpened
               ? "text-[#1A1208] font-black"
               : isLocked

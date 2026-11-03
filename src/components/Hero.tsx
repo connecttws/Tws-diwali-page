@@ -36,25 +36,25 @@ export function Hero({ onPickDiyaClick }: HeroProps) {
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-[#FFFFFF] border border-[#D4A017]/40 text-[#C59114] text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-2.5 sm:mb-3 shadow-xs">
               <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C59114] fill-[#C59114]" />
-              <span>TWS Diwali Dhamaka is Here</span>
+              <span>TWS Diwali Bonanza is Here</span>
             </div>
 
             {/* Headline with mobile-optimized 5-line alignment and gold shimmer emphasis */}
             <h1 className="text-[1.75rem] xs:text-[1.95rem] sm:text-3xl md:text-4xl lg:text-[2.45rem] xl:text-[2.95rem] font-black tracking-tight text-[#1A1208] leading-[1.2] sm:leading-[1.14] mb-3.5 sm:mb-4">
               <span className="block sm:inline">This Diwali,</span>{" "}
-              <span className="block sm:inline">you could win</span>{" "}
+              <span className="block sm:inline">unlock exclusive</span>{" "}
               <span className="block sm:inline gold-text-shimmer font-black">
-                ₹50K worth of
+                Bonanza Offers &
               </span>{" "}
               <span className="block sm:inline gold-text-shimmer font-black">
-                services for free —
+                Festive Deals —
               </span>{" "}
               <span className="block sm:inline">if luck is on your side.</span>
             </h1>
 
             {/* Supporting Copy */}
             <p className="text-xs xs:text-sm sm:text-base lg:text-[1.05rem] text-[#4A3B2C] font-normal leading-relaxed mb-5 sm:mb-6 max-w-xl">
-              Choose a diya. Reveal your surprise. Celebrate the possibilities.
+              Choose a diya. Reveal your lucky offer. Celebrate the possibilities.
             </p>
 
             {/* Primary CTA and Microcopy */}

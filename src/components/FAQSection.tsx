@@ -12,27 +12,27 @@ const FAQS: FAQItem[] = [
   {
     question: "How do I redeem my Diwali Dhamaka surprise voucher?",
     answer:
-      "Once you select and reveal your Diya, you'll receive a unique voucher code (e.g., DHAMAKA-ANANTA-50K-8F2X). Simply tap 'Claim via WhatsApp' or 'Claim via Email' to initiate your consultation with the TWS engineering team. We will schedule a kickoff session and map out your deliverables immediately.",
+      "Once you select and reveal your Diya, you'll receive a unique voucher code (e.g., BONANZA-3M-LEADS-FREE). Enter your name and contact number right in the popup to instantly record your offer with our team, or connect with us directly on WhatsApp.",
   },
   {
-    question: "Is the service 100% free, or are there hidden conditions?",
+    question: "How do the Diwali Bonanza package offers work?",
     answer:
-      "Every single surprise revealed in TWS Diwali Dhamaka is 100% free of service charges. You will never be asked for an upfront deposit or credit card to claim your assigned scope. Any third-party costs you might independently choose (such as your own domain registrar fees or proprietary cloud hosting accounts) remain yours, but our design, engineering, and advisory services are fully sponsored.",
+      "All offers in our Diwali Bonanza are exclusive festive packages, BOGO bonuses, and special discounts. When you claim your offer, the complimentary bonuses (such as 3 extra months, 10 free reels, 50 free appointments, or a free landing page) are 100% free with your package.",
   },
   {
     question: "Can I transfer my voucher to a friend or co-founder?",
     answer:
-      "Yes! If your current project does not need the specific surprise you revealed, you may transfer your voucher code once to another business owner, client, or engineering partner. They just need to quote your unique code upon redemption.",
+      "Yes! If your current project does not need the specific surprise you revealed, you may transfer your voucher code once to another business owner, client, or partner. They just need to quote your unique code upon redemption.",
   },
   {
     question: "How long is my voucher valid?",
     answer:
-      "Vouchers are valid for between 45 and 90 days from the date of the Diwali campaign (depending on the scope tier). This gives you ample time to prepare your requirements without feeling rushed.",
+      "Vouchers are valid for 60 days from Diwali 2026. This gives you ample time to plan your business growth and outreach without feeling rushed.",
   },
   {
     question: "How are the surprises assigned across the 10 diyas?",
     answer:
-      "Each diya corresponds to an auspicious Vedic name and a deterministic, handcrafted service surprise ranging from ₹15,000 to the ₹50,000 Grand Prize. The assignment is fixed and guaranteed — no fake spinners or randomized tricks.",
+      "Each diya corresponds to an auspicious Vedic name and an exclusive Diwali Bonanza lucky offer — from BOGO packages to free appointments, bonus reels, and landing pages. The assignment is fixed and transparent — no fake spinners or randomized tricks.",
   },
   {
     question: "What if I have an existing codebase or design system?",
