@@ -19,18 +19,25 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "TWS Diwali Dhamaka",
   description:
-    "Celebrate Diwali with TWS. Choose a lucky diya, unlock festive surprises, and win up to ₹50,000 worth of premium digital services.",
+    "Celebrate Diwali with TWS. Choose a lucky diya, unlock festive surprises, and win exclusive Diwali Bonanza offers.",
+  icons: {
+    icon: "/tws-logo.png",
+    shortcut: "/tws-logo.png",
+    apple: "/tws-logo.png",
+  },
   openGraph: {
     title: "TWS Diwali Dhamaka",
     description:
-      "Celebrate Diwali with TWS. Choose a lucky diya, unlock festive surprises, and win up to ₹50,000 worth of premium digital services.",
+      "Celebrate Diwali with TWS. Choose a lucky diya, unlock festive surprises, and win exclusive Diwali Bonanza offers.",
     type: "website",
+    images: ["/tws-logo.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "TWS Diwali Dhamaka",
     description:
-      "Celebrate Diwali with TWS. Choose a lucky diya, unlock festive surprises, and win up to ₹50,000 worth of premium digital services.",
+      "Celebrate Diwali with TWS. Choose a lucky diya, unlock festive surprises, and win exclusive Diwali Bonanza offers.",
+    images: ["/tws-logo.png"],
   },
 };
 

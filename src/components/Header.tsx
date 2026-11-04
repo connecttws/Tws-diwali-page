@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Flame } from "lucide-react";
+import Image from "next/image";
 
 interface HeaderProps {
   onPickDiyaClick?: () => void;
@@ -40,19 +40,21 @@ export function Header({ onPickDiyaClick, isAlreadyOpened = false }: HeaderProps
         <Link
           href="/"
           className="flex items-center gap-2.5 sm:gap-3 text-decoration-none group"
-          aria-label="TWS Diwali Dhamaka Home"
+          aria-label="Team With Someone (TWS) Diwali Dhamaka Home"
         >
-          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-[#D4A017] via-[#E5B537] to-[#C59114] flex items-center justify-center shadow-xs shrink-0 group-hover:scale-105 transition-transform">
-            <Flame className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-white fill-white" />
+          <div className="relative flex items-center h-8 sm:h-9 w-auto">
+            <Image
+              src="/tws-logo.png"
+              alt="Team With Someone (TWS)"
+              width={140}
+              height={52}
+              className="h-8 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              priority
+            />
           </div>
-          <div className="flex flex-col">
-            <span className="font-extrabold text-lg sm:text-xl tracking-tight text-[#1A1208] group-hover:text-[#C59114] transition-colors leading-none">
-              TWS
-            </span>
-            <span className="font-sans font-bold text-[10px] sm:text-xs text-[#C59114] tracking-widest uppercase mt-0.5 leading-none">
-              Diwali Dhamaka
-            </span>
-          </div>
+          <span className="hidden xs:inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-bold bg-[#FCF4D9] text-[#8A610A] border border-[#D4A017]/40 tracking-wider uppercase">
+            Diwali Dhamaka
+          </span>
         </Link>
       </div>
     </header>

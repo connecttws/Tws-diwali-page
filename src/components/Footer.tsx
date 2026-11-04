@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Flame, ArrowUp } from "lucide-react";
 
 export function Footer() {
@@ -27,10 +28,16 @@ export function Footer() {
 
         {/* Footer Navigation & Copyright */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 text-xs sm:text-sm">
-          <div className="flex items-center gap-2">
-            <span className="font-black text-base sm:text-lg text-[#1A1208]">TWS</span>
+          <div className="flex items-center gap-2.5">
+            <Image
+              src="/tws-logo.png"
+              alt="Team With Someone (TWS)"
+              width={120}
+              height={45}
+              className="h-7 sm:h-8 w-auto object-contain"
+            />
             <span className="text-[#4A3B2C]/40">·</span>
-            <span className="font-semibold text-[#4A3B2C]">Diwali Dhamaka Campaign 2026</span>
+            <span className="font-semibold text-[#4A3B2C] text-xs">Diwali Dhamaka Campaign 2026</span>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-semibold">

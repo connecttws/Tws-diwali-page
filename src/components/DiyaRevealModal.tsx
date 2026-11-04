@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 import confetti from "canvas-confetti";
 import {
   Sparkles,
@@ -203,6 +204,17 @@ Please confirm my offer deliverables!`;
         {/* ========================================================================= */}
         {!isSubmitted ? (
           <div className="relative z-10 flex flex-col animate-fadeIn">
+            {/* TWS Brand Logo */}
+            <div className="flex items-center justify-center mb-1.5">
+              <Image
+                src="/tws-logo.png"
+                alt="Team With Someone (TWS)"
+                width={120}
+                height={45}
+                className="h-6 sm:h-7 w-auto object-contain"
+              />
+            </div>
+
             {/* Top Auspicious Badge */}
             <div className="inline-flex items-center justify-center gap-1.5 px-3 py-1 rounded-full bg-[#FCF4D9] border border-[#D4A017]/40 text-[#C59114] text-[10px] sm:text-xs font-black tracking-widest uppercase mx-auto mb-2 shadow-xs">
               <Sparkles className="w-3.5 h-3.5 text-[#C59114] fill-[#C59114]" />
@@ -318,6 +330,17 @@ Please confirm my offer deliverables!`;
           /* VIEW 2: AFTER SUBMIT -> FULL REVEALED OFFER DETAILS SHOW                  */
           /* ========================================================================= */
           <div className="relative z-10 flex flex-col text-left animate-fadeIn">
+            {/* TWS Brand Logo */}
+            <div className="flex items-center justify-center mb-1.5">
+              <Image
+                src="/tws-logo.png"
+                alt="Team With Someone (TWS)"
+                width={120}
+                height={45}
+                className="h-6 sm:h-7 w-auto object-contain"
+              />
+            </div>
+
             {/* Top Unlocked Badge */}
             <div className="text-center mb-2">
               <span className="inline-flex items-center justify-center gap-1.5 px-3 py-1 rounded-full bg-[#EBF7EE] border border-[#3E7B44]/40 text-[#256029] text-[10px] sm:text-xs font-black tracking-widest uppercase shadow-xs">
