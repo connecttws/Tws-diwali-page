@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import confetti from "canvas-confetti";
 import { Sparkles, Check, Flame, X, User, Phone, Copy, CheckCircle2, Send, ExternalLink, Loader2 } from "lucide-react";
 import { DiyaOffer, saveClaimedLead, getSavedOpenedDiya, ClaimedLeadData } from "@/data/diyaOffers";
@@ -18,6 +19,17 @@ export function DiyaRevealModal({ offer, onClose }: DiyaRevealModalProps) {
   const [formError, setFormError] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, []);
 
   useEffect(() => {
     playDiwaliRevealChime();
@@ -137,16 +149,18 @@ Please confirm my offer deliverables!`
   );
   const whatsappUrl = `https://wa.me/917275895385?text=${whatsappMessage}`;
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 overflow-y-auto bg-[#1A1208]/80 backdrop-blur-md p-3 sm:p-5 flex items-center justify-center animate-fadeIn"
+      className="fixed inset-0 z-[99999] overflow-y-auto bg-[#1A1208]/85 backdrop-blur-md p-3 sm:p-5 flex items-center justify-center animate-fadeIn overscroll-contain"
       onClick={(e) => {
         if (e.target === e.currentTarget && onClose) onClose();
       }}
     >
-      <div className="relative w-full max-w-lg bg-[#FFFFFF] rounded-3xl sm:rounded-4xl border-2 border-[#C59114] shadow-[0_24px_70px_rgba(138,97,10,0.35)] overflow-hidden my-auto flex flex-col p-4 sm:p-7 text-center animate-scaleUp max-h-[92vh] overflow-y-auto">
+      <div className="relative w-full max-w-lg bg-[#FFFFFF] rounded-3xl sm:rounded-4xl border-2 border-[#C59114] shadow-[0_24px_70px_rgba(138,97,10,0.35)] overflow-hidden my-auto flex flex-col p-4 sm:p-7 text-center animate-scaleUp max-h-[90dvh] sm:max-h-[92vh] overflow-y-auto overscroll-contain z-10">
         {/* Ambient Top Glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-36 bg-[radial-gradient(ellipse,rgba(245,211,114,0.45)_0%,transparent_70%)] pointer-events-none" />
 
@@ -361,6 +375,7 @@ Please confirm my offer deliverables!`
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

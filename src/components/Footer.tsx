@@ -10,7 +10,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t border-[#D4A017]/25 bg-[#F6F3EB] text-[#4A3B2C] pt-12 sm:pt-16 pb-10 sm:pb-12 relative z-10">
+    <footer className="border-t border-[#D4A017]/25 bg-[#F6F3EB] text-[#4A3B2C] pt-12 sm:pt-16 pb-10 sm:pb-12 relative">
       <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
         {/* Festive Blessing Banner */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 pb-8 sm:pb-10 border-b border-[#D4A017]/20">

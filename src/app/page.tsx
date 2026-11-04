@@ -47,7 +47,7 @@ export default function HomePage() {
         isAlreadyOpened={isAlreadyOpened}
       />
 
-      <main className="flex-1 relative z-10">
+      <main className="flex-1 relative">
         {/* Hero with interactive 3D Diya centerpiece */}
         <Hero onPickDiyaClick={scrollToDiyaSelection} />
 

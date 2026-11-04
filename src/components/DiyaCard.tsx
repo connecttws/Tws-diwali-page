@@ -52,10 +52,6 @@ export function DiyaCard({ offer, isOpened = false, isLocked = false, onSelect }
             <Lock className="w-2.5 h-2.5 text-[#7A6652]" />
             <span>Locked</span>
           </span>
-        ) : offer.isGrandPrize ? (
-          <span className="text-[9px] xs:text-[10px] sm:text-[11px] uppercase font-black tracking-wider text-[#1A1208] bg-[#F5D372] border border-[#D4A017]/40 px-1 xs:px-1.5 sm:px-2 py-0.5 rounded shadow-xs">
-            ✨ Free LP
-          </span>
         ) : (
           <span className="text-[9px] xs:text-[10px] sm:text-[11px] text-[#7A6652] font-semibold tracking-wide">
             Diya

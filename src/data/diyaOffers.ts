@@ -221,7 +221,6 @@ export const DIYA_OFFERS: DiyaOffer[] = [
     valueAmount: "Free Landing Page Included",
     numericValue: 15000,
     badge: "Free Landing Page Included!",
-    isGrandPrize: true,
     deliverables: [
       "15 Premium Reel Editing Package (₹15,000)",
       "Customised Business Landing Page designed & built absolutely FREE",
