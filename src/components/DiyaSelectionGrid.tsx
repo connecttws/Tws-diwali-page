@@ -43,7 +43,6 @@ export function DiyaSelectionGrid({
     }
 
     playDiyaTapSound();
-    onOpenDiya(diyaId);
     if (offer) {
       setModalOffer(offer);
     }
@@ -231,6 +230,10 @@ export function DiyaSelectionGrid({
       {modalOffer && (
         <DiyaRevealModal
           offer={modalOffer}
+          isAlreadyOpened={isAlreadyOpened && openedDiyaId === modalOffer.id}
+          onOfferUnlocked={(diyaId) => {
+            onOpenDiya(diyaId);
+          }}
           onClose={() => setModalOffer(null)}
         />
       )}
